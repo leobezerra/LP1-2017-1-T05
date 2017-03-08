@@ -1,5 +1,4 @@
 # Linguagem de Programação 1 (2017.1)
----
 *Leonardo Bezerra (leobezerra at imd.ufrn.br)*
 
 ---
