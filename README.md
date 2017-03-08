@@ -13,3 +13,4 @@ Abaixo, os materiais de consulta para cada tópico de aula.
   * [Roteiro](laboratorio/memoria/roteiro.pdf)
   * [Apêndice](laboratorio/memoria/apendice.pdf)
   * [Notebook](laboratorio/memoria/notebook.html)
+  * [Notebook2](laboratorio/memoria/notebook2.html)
