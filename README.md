@@ -1,4 +1,5 @@
 # Linguagem de Programação 1 (2017.1)
+*Instituto Metrópole Digital (IMD), Universidade Federal do Rio Grande do Norte (UFRN)*
 *Leonardo Bezerra (leobezerra at imd.ufrn.br)*
 
 ---
