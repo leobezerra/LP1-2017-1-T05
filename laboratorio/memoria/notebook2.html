@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>alocacao-estatica</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>alocacao-dinamica</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11778,7 +11778,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Aloca&#231;&#227;o-est&#225;tica-em-C++">Aloca&#231;&#227;o est&#225;tica em C++<a class="anchor-link" href="#Aloca&#231;&#227;o-est&#225;tica-em-C++">&#182;</a></h1><p>Neste notebook, utilizaremos exemplos práticos para compreender conceitos importantes relacionados à alocação estática em C++.</p>
+<h1 id="Aloca&#231;&#227;o-din&#226;mica-em-C++">Aloca&#231;&#227;o din&#226;mica em C++<a class="anchor-link" href="#Aloca&#231;&#227;o-din&#226;mica-em-C++">&#182;</a></h1><p>Neste notebook, utilizaremos exemplos práticos para compreender conceitos importantes relacionados à alocação dinâmica em C++.</p>
 
 </div>
 </div>
@@ -11800,12 +11800,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="De-volta-ao-t&#243;pico-do-notebook">De volta ao t&#243;pico do notebook<a class="anchor-link" href="#De-volta-ao-t&#243;pico-do-notebook">&#182;</a></h3><p>Tanto C como C++ fornecem dois tipos de acesso a memória quando se trabalha com alocação estática.</p>
-<ol>
-<li>No <strong>acesso direto</strong>, a variável declarada representa um espaço de memória. </li>
-<li>No <strong>acesso indireto</strong>, o espaço de memória é acessado através de seu endereço, que por sua vez pode ser armazenado em uma variável especial para endereços, denominada <em>ponteiro</em>. </li>
-</ol>
-<p>Uma particularidade do C++ é que esta linguagem permite que um espaço de memória seja associado a múltiplas variáveis, utilizando acesso direto através de <em>referências</em>. Por fim, tanto C como C++ permitem ambos os tipos de acesso para vetores, o que nesta disciplina será denominado <strong>acesso misto</strong>.</p>
+<h3 id="De-volta-ao-t&#243;pico-do-notebook">De volta ao t&#243;pico do notebook<a class="anchor-link" href="#De-volta-ao-t&#243;pico-do-notebook">&#182;</a></h3><p>Tanto C como C++ fornecem dois tipos de acesso a memória quando se trabalha com alocação dinâmica: acesso <strong>indireto</strong> e acesso <strong>misto</strong>.</p>
 
 </div>
 </div>
@@ -11815,7 +11810,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exemplos">Exemplos<a class="anchor-link" href="#Exemplos">&#182;</a></h2><p>Abaixo, você verá diferentes trechos de código ilustrando o uso de alocação estática em C++.</p>
+<h2 id="Exemplos">Exemplos<a class="anchor-link" href="#Exemplos">&#182;</a></h2><p>Abaixo, você verá diferentes trechos de código ilustrando o uso de alocação dinâmica em C++.</p>
 <p>Por uma questão de organização do notebook, cada exemplo estará contido em um procedimento, executado logo a seguir de sua definição.</p>
 <p>Ainda por um aspecto técnico do notebook, antes dos exemplos serão incluídas as diretivas utilizadas tradicionalmente fora da main.</p>
 
@@ -11861,21 +11856,16 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <h3 id="&#205;ndice"><a name="idx">&#205;ndice</a><a class="anchor-link" href="#&#205;ndice">&#182;</a></h3><ol>
-<li>Acesso direto (sem referências)<ul>
-<li><a href="#ex1">Variáveis escalares</a></li>
-<li><a href="#ex2">Vetores</a></li>
-</ul>
-</li>
-<li>Acesso direto (com referências)<ul>
-<li><a href="#ex3">No mesmo escopo</a></li>
-<li><a href="#ex4">Como parâmetro</a></li>
-</ul>
-</li>
 <li>Acesso indireto (com ponteiros)<ul>
-<li><a href="#ex5">No mesmo escopo, com variáveis escalares</a></li>
-<li><a href="#ex6">No mesmo escopo, com vetores</a></li>
-<li><a href="#ex7">Como parâmetro, com variável escalar</a></li>
-<li><a href="#ex8">Como parâmetro, com vetores</a></li>
+<li><a href="#ex1">No mesmo escopo, com variáveis escalares</a></li>
+<li><a href="#ex2">No mesmo escopo, com vetores</a></li>
+<li><a href="#ex3">Como parâmetro, com variável escalar</a></li>
+<li><a href="#ex4">Como parâmetro, com vetores</a></li>
+</ul>
+</li>
+<li>Acesso misto<ul>
+<li><a href="#ex5">No mesmo escopo</a></li>
+<li><a href="#ex6">Como parâmetro</a></li>
 </ul>
 </li>
 </ol>
@@ -11889,7 +11879,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h3 id="Acesso-direto-(sem-refer&#234;ncias)">Acesso direto (sem refer&#234;ncias)<a class="anchor-link" href="#Acesso-direto-(sem-refer&#234;ncias)">&#182;</a></h3><h4 id="Vari&#225;veis-escalares"><a name="ex1">Vari&#225;veis escalares</a><a class="anchor-link" href="#Vari&#225;veis-escalares">&#182;</a></h4>
+<h3 id="Acesso-indireto-(com-ponteiros)">Acesso indireto (com ponteiros)<a class="anchor-link" href="#Acesso-indireto-(com-ponteiros)">&#182;</a></h3><h4 id="No-mesmo-escopo,-com-vari&#225;veis-escalares"><a name="ex1">No mesmo escopo, com vari&#225;veis escalares</a><a class="anchor-link" href="#No-mesmo-escopo,-com-vari&#225;veis-escalares">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -11899,10 +11889,11 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex1</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="kt">int</span> <span class="n">var1</span><span class="p">;</span> 
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
-    <span class="n">var1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> 
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">var1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
+    <span class="o">*</span><span class="n">var1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="n">var1</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -11949,8 +11940,8 @@ div#notebook {
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>32668
-2
+<pre>0
+5
 </pre>
 </div>
 </div>
@@ -11961,7 +11952,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
+<pre>(void) @0x7fff57a86730
 </pre>
 </div>
 
@@ -11987,7 +11978,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h4 id="Vetores"><a name="ex2">Vetores</a><a class="anchor-link" href="#Vetores">&#182;</a></h4>
+<h4 id="No-mesmo-escopo,-com-vetores"><a name="ex2">No mesmo escopo, com vetores</a><a class="anchor-link" href="#No-mesmo-escopo,-com-vetores">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -11997,9 +11988,9 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex2</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-    <span class="kt">int</span> <span class="n">v1</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
-    <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> 
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">v1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -12047,7 +12038,7 @@ div#notebook {
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>32668
+<pre>0
 5
 </pre>
 </div>
@@ -12059,7 +12050,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
+<pre>(void) @0x7fff57a86730
 </pre>
 </div>
 
@@ -12085,9 +12076,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h3 id="Acesso-direto-(com-refer&#234;ncias)">Acesso direto (com refer&#234;ncias)<a class="anchor-link" href="#Acesso-direto-(com-refer&#234;ncias)">&#182;</a></h3><p>Para declarar uma variável como referência para outra, é necessário
-utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
-<h4 id="No-mesmo-escopo"><a name="ex3">No mesmo escopo</a><a class="anchor-link" href="#No-mesmo-escopo">&#182;</a></h4>
+<h4 id="Como-par&#226;metro,-com-vari&#225;vel-escalar"><a name="ex2">Como par&#226;metro, com vari&#225;vel escalar</a><a class="anchor-link" href="#Como-par&#226;metro,-com-vari&#225;vel-escalar">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -12096,12 +12085,8 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex3</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">var1</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">var2</span> <span class="o">=</span> <span class="n">var1</span><span class="p">;</span>  
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
-    <span class="n">var2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">inc</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> 
 <span class="p">}</span>
 </pre></div>
 
@@ -12133,6 +12118,43 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex3</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">var1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">var1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">inc</span><span class="p">(</span><span class="n">var1</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre></pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="n">ex3</span><span class="p">();</span>
 </pre></div>
 
@@ -12148,19 +12170,19 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>32668
-2
+<pre>2
+3
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
+<pre>(void) @0x7fff57a86730
 </pre>
 </div>
 
@@ -12186,53 +12208,17 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h4 id="Como-par&#226;metro"><a name="ex4">Como par&#226;metro</a><a class="anchor-link" href="#Como-par&#226;metro">&#182;</a></h4>
+<h4 id="Como-par&#226;metro,-com-vetores"><a name="ex4">Como par&#226;metro, com vetores</a><a class="anchor-link" href="#Como-par&#226;metro,-com-vetores">&#182;</a></h4>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">inc</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> 
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre></pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex4</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">var1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
-    <span class="n">inc</span><span class="p">(</span><span class="n">var1</span><span class="p">);</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">zerar</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
 <span class="p">}</span>
 </pre></div>
 
@@ -12264,6 +12250,43 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex4</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">v1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
+    <span class="n">zerar</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre></pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="n">ex4</span><span class="p">();</span>
 </pre></div>
 
@@ -12279,19 +12302,19 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2
-3
+<pre>3
+0
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
+<pre>(void) @0x7fff57a86730
 </pre>
 </div>
 
@@ -12317,28 +12340,22 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h3 id="Acesso-indireto-(com-ponteiros)">Acesso indireto (com ponteiros)<a class="anchor-link" href="#Acesso-indireto-(com-ponteiros)">&#182;</a></h3><p>Para declarar uma variável como ponteiro para outra, é necessário utilizar o símbolo * logo após o tipo de dado contido na variável.</p>
-<p>Note que, como ponteiros devem armazenar apenas endereços de memória, é necessário utilizar operadores auxiliares para obter e acessar endereços.</p>
-<ol>
-<li>o operador &amp; retorna o endereço de memória de uma variável</li>
-<li>o operador * acessa o endereço especificado por um ponteiro</li>
-</ol>
-<hr>
-<h4 id="No-mesmo-escopo,-com-vari&#225;veis-escalares"><a name="ex5">No mesmo escopo, com vari&#225;veis escalares</a><a class="anchor-link" href="#No-mesmo-escopo,-com-vari&#225;veis-escalares">&#182;</a></h4>
+<h3 id="Acesso-misto">Acesso misto<a class="anchor-link" href="#Acesso-misto">&#182;</a></h3><h4 id="No-mesmo-escopo"><a name="ex5">No mesmo escopo</a><a class="anchor-link" href="#No-mesmo-escopo">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex5</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-    <span class="kt">int</span> <span class="n">var1</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="o">*</span> <span class="n">var2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">var1</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;; &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">var2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
-    <span class="o">*</span><span class="n">var2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span>  <span class="o">&lt;&lt;</span> <span class="s">&quot;; &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">var2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">v1</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
+  <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -12351,7 +12368,7 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -12367,7 +12384,7 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="n">ex5</span><span class="p">();</span>
@@ -12385,19 +12402,19 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>32668; 32668
-5; 5
+<pre>1504130944
+2
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
+<pre>(void) @0x7fff57a86730
 </pre>
 </div>
 
@@ -12423,21 +12440,23 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h4 id="No-mesmo-escopo,-com-vetores"><a name="ex6">No mesmo escopo, com vetores</a><a class="anchor-link" href="#No-mesmo-escopo,-com-vetores">&#182;</a></h4>
+<h4 id="Como-par&#226;metro"><a name="ex7">Como par&#226;metro</a><a class="anchor-link" href="#Como-par&#226;metro">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex6</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">v1</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
-    <span class="kt">int</span> <span class="o">*</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">v1</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex6</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">v1</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
+  <span class="n">zerar</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -12450,7 +12469,7 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -12466,7 +12485,7 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="n">ex6</span><span class="p">();</span>
@@ -12484,65 +12503,11 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>32668; 32668
-5; 5
+<pre>2
+0
 </pre>
 </div>
 </div>
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="#idx">Voltar ao índice</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<h4 id="Como-par&#226;metro,-com-vari&#225;vel-escalar:"><a name="ex7">Como par&#226;metro, com vari&#225;vel escalar:</a><a class="anchor-link" href="#Como-par&#226;metro,-com-vari&#225;vel-escalar:">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">inc</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> 
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
 
 <div class="output_area">
 <div class="prompt output_prompt">Out[15]:</div>
@@ -12550,84 +12515,7 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre></pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex7</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">var1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
-    <span class="n">inc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">var1</span><span class="p">);</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre></pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="n">ex7</span><span class="p">();</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2
-3
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[17]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
+<pre>(void) @0x7fff57a86730
 </pre>
 </div>
 
@@ -12643,148 +12531,6 @@ utilizar o símbolo &amp; logo após o tipo de dado contido na variável.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="#idx">Voltar ao índice</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<h4 id="Como-par&#226;metro,-com-vetores"><a name="ex8">Como par&#226;metro, com vetores</a><a class="anchor-link" href="#Como-par&#226;metro,-com-vetores">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">zerar</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[18]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre></pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="kt">void</span> <span class="nf">ex8</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">v1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> 
-    <span class="n">zerar</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[19]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre></pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="n">ex8</span><span class="p">();</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1
-0
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[20]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(void) @0x7fff4fc6f730
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="#idx">Voltar ao índice</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<p>Clique aqui para seguir para <a href="alocacao-dinamica.html">Notebook 2</a>, sobre alocação dinâmica.</p>
 
 </div>
 </div>
