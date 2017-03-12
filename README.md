@@ -12,5 +12,12 @@ Abaixo, os materiais de consulta para cada tópico de aula.
 2. **Aulas 05 e 06 - Gerenciamento de memória**
   * [Roteiro](laboratorio/memoria/roteiro.pdf)
   * [Apêndice](laboratorio/memoria/apendice.pdf)
-  * [Notebook](laboratorio/memoria/notebook.html)
-  * [Notebook2](laboratorio/memoria/notebook2.html)
+  * [Notebook (Alocação estática)](laboratorio/memoria/notebook.html)
+  * [Notebook2 (Alocação dinâmica)](laboratorio/memoria/notebook2.html)
+3. **Aulas 07 e 08 - Funções**
+  * [Roteiro](laboratorio/funcoes/roteiro.pdf)
+  * [Apêndice](laboratorio/funcoes/apendice.pdf)
+  * [Notebook (Protótipos)](laboratorio/funcoes/notebook.html)
+  * [Notebook (Parâmetros default)](laboratorio/funcoes/notebook2.html)
+  * [Notebook (Ponteiros para funções)](laboratorio/funcoes/notebook3.html)
+  * [Notebook (Sobrecarga de funções)](laboratorio/funcoes/notebook4.html)
