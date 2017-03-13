@@ -13,7 +13,7 @@ Abaixo, os materiais de consulta para cada tópico de aula.
   * [Roteiro](laboratorio/memoria/roteiro.pdf)
   * [Apêndice (Códigos)](laboratorio/memoria/apendice.pdf)
   * [Notebook (Alocação estática)](laboratorio/memoria/notebook.html)
-  * [Notebook2 (Alocação dinâmica)](laboratorio/memoria/notebook2.html)
+  * [Notebook 2 (Alocação dinâmica)](laboratorio/memoria/notebook2.html)
 3. **Aulas 07 e 08 - Funções**
   * [Roteiro](laboratorio/funcoes/roteiro.pdf)
   * [Apêndice (Códigos)](laboratorio/funcoes/apendice.pdf)
