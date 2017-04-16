@@ -23,3 +23,4 @@ Abaixo, os materiais de consulta para cada tópico de aula.
   * [Notebook 4 (Sobrecarga de funções)](laboratorio/funcoes/notebook4.html)
 4. **Aulas 13 e 14 - Introdução a OO (encapsulamento / string)**
   * [Referência](laboratorio/string/string.html)
+  * [Roteiro](laboratorio/string/roteiro.pdf)
