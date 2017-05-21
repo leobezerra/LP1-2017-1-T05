@@ -15,8 +15,8 @@ com características em comum~(*clusters*), é possível entender padrões nos d
 
 Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em um arquivo CSV como um dataframe de números reais.
 
-Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) Conjunto, estudado nas disciplinas de Estruturas de Dados Básicas I.
-Conforme a especificação do TAD Conjunto, esta classe deverá fornecer as seguintes operações básicas:
+Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) **Conjunto**, estudado nas disciplinas de *Estruturas de Dados Básicas I*.
+Conforme a especificação do **TAD Conjunto**, esta classe deverá fornecer as seguintes operações básicas:
 * **Inserção**
 * **Remoção**
 * **Pertinência**
@@ -24,7 +24,7 @@ Conforme a especificação do TAD Conjunto, esta classe deverá fornecer as segu
 * **Diferença**
 * **Intersecção**
 
-Adicionalmente, sua implementação do TAD conjunto deverá fornecer as operações abaixo: 
-* **Ordenar**, que retornará um TAD Sequência a partir da ordenação dos dados contidos no Conjunto, utilizando pra isso uma métrica passada como parâmetro.
-* **Agrupar**, que retornará um conjunto de objetos da TAD Partição, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
+Adicionalmente, sua implementação do **TAD Conjunto** deverá fornecer as operações abaixo: 
+* **Ordenar**, que retornará um objeto **TAD Sequência** a partir da ordenação dos dados contidos no Conjunto, utilizando pra isso uma métrica passada como parâmetro.
+* **Agrupar**, que retornará um conjunto de objetos **TAD Partição**, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
 
