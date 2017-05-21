@@ -27,9 +27,11 @@ Abaixo, os materiais de consulta para cada tópico de aula.
 5. **Aulas 15 e 16 - Introdução a OO (polimorfismo / vector)**
   * [Referência](laboratorio/vector/vector.html)
   * [Roteiro](laboratorio/vector/roteiro.pdf)
-6. **Aula 17 - Introdução a OO (herança / IO)**
+6. **Aulas 17 e 18 - Introdução a OO (herança / IO)**
   * [Referência (istream)](laboratorio/ios/istream.html)
   * [Referência (ostream)](laboratorio/ios/ostream.html)
   * [Referência (basic_istream)](laboratorio/ios/basic_istream.html)
   * [Referência (basic_ostream)](laboratorio/ios/basic_ostream.html)
   * [Roteiro](laboratorio/ios/roteiro.pdf)
+6. **Aulas 19 e 20 - Introdução a OO (polimorfismo / iostream)**
+  * [Roteiro](laboratorio/iostream/roteiro.pdf)
