@@ -32,8 +32,8 @@ Adicionalmente, sua implementação do **TAD Dataframe** deverá fornecer as seg
 
 Sua aplicação será avaliada de forma modular:
 
-* Leitura de *dataframes* em arquivos CSV: 1,0 ponto
+* Leitura do **TAD Dataframe** a partir de arquivos CSV: 1,0 ponto
 * Implementação do **TAD Dataframe** e suas operações básicas para um único tipo de dados: 3,0 pontos
 * Implementação do **TAD Dataframe** e suas operações básicas para ambos os tipos de dados: 3,0 pontos
 * Implementação da operação *Ordenar*: 2,0 ponto
-* Persistência de *dataframes* em arquivos CSV: 1,0 ponto
+* Persistência do **TAD Dataframe** em arquivos CSV: 1,0 ponto
