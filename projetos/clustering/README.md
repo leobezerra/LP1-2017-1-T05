@@ -3,6 +3,8 @@
 
 ---
 
-# Contexto da aplicação
+# Análise de agrupamentos
+
+##Contexto da aplicação
 
 Algoritmos de análise de dados são utilizados para obter conhecimento a partir de bases de informação.
