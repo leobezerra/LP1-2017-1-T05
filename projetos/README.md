@@ -9,7 +9,7 @@ Abaixo, as descrições das diferentes alternativas de enunciado disponíveis pa
 
 ---
 
-1. [**Análise de agrupamentos**](projetos/clustering/README.md)
-1. [**Dataframes**](projetos/dns-server/README.md)
-1. [**Servidor de mensagens**](projetos/msg-server/README.md)
-1. [**Servidor DNS**](projetos/dns-server/README.md)
+1. [**Análise de agrupamentos**](clustering/README.md)
+1. [**Dataframes**](dns-server/README.md)
+1. [**Servidor de mensagens**](msg-server/README.md)
+1. [**Servidor DNS**](dns-server/README.md)
