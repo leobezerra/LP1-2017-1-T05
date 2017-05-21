@@ -7,16 +7,16 @@
 
 ## Contexto da aplicação
 
-O TAD Dataframe é um tipo abstrato de dados usado por linguagens de alto nível que trabalham com a análise de bases de dados. Dentre as principais características do TAD Dataframe, destacam-se:
+O **TAD Dataframe** é um tipo abstrato de dados usado por linguagens de alto nível que trabalham com a análise de bases de dados. Dentre as principais características do **TAD Dataframe**, destacam-se:
 
-1. A independência de tipos entre as colunas, tornando o TAD Dataframe um tipo composto heterogêneo de dados.
-1. A possibilidade de acessar colunas pelo seu nome.
+1. A independência de tipos entre as colunas, tornando o **TAD Dataframe** um tipo composto de dados heterogêneos.
+1. A possibilidade de acessar uma coluna pelo seu nome.
 1. A possibilidade de realizar consultas complexas, utilizando operações lógicas sobre os nomes das colunas.
-1. A possibilidade de aplicar ordenações sobre os dados, baseada em métricas de ordenação que podem ser aplicadas de forma sequencial.
+1. A possibilidade de aplicar ordenações sobre os dados, baseadas em métricas de ordenação que podem ser aplicadas de forma sequencial.
 
 ## Especificação da aplicação
 
-Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em um arquivo CSV como um *dataframe* contedo dois tipos possíveis de dados: numérico e texto
+Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em um arquivo CSV como um *dataframe* contedo dois tipos possíveis de dados: numérico e texto.
 
 Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) **Conjunto**, estudado nas disciplinas de *Estruturas de Dados Básicas I*.
 Conforme a especificação do **TAD Conjunto**, esta classe deverá fornecer as seguintes operações básicas:
