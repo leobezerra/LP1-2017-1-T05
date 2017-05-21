@@ -17,14 +17,14 @@ Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em
 
 Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) Conjunto, estudado nas disciplinas de Estruturas de Dados Básicas I.
 Conforme a especificação do TAD Conjunto, esta classe deverá fornecer as seguintes operações básicas:
-* Inserção
-* Remoção
-* Pertinência
-* União
-* Diferença
-* Intersecção
+* **Inserção**
+* **Remoção**
+* **Pertinência**
+* **União**
+* **Diferença**
+* **Intersecção**
 
 Adicionalmente, sua implementação do TAD conjunto deverá fornecer as operações abaixo: 
-* *Ordenar*, que retornará um TAD Sequência a partir da ordenação dos dados contidos no Conjunto, utilizando pra isso uma métrica passada como parâmetro.
-* *Agrupar*, que retornará um conjunto de objetos da TAD Partição, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
+* **Ordenar**, que retornará um TAD Sequência a partir da ordenação dos dados contidos no Conjunto, utilizando pra isso uma métrica passada como parâmetro.
+* **Agrupar**, que retornará um conjunto de objetos da TAD Partição, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
 
