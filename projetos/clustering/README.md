@@ -28,3 +28,7 @@ Adicionalmente, sua implementação do **TAD Conjunto** deverá fornecer as oper
 * *Ordenar*, que retornará um objeto **TAD Sequência** a partir da ordenação dos dados contidos em um objeto do **TAD Conjunto**, utilizando pra isso uma métrica passada como parâmetro.
 * *Agrupar*, que retornará um conjunto de objetos **TAD Partição**, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
 
+## Prazos e pontuação
+
+
+
