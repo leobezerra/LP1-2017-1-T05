@@ -13,7 +13,7 @@ com características em comum (partições, ou *clusters*), é possível entende
 
 ## Especificação da aplicação
 
-Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em um arquivo CSV como um dataframe de números reais.
+Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em um arquivo CSV como um *dataframe* de números reais.
 
 Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) **Conjunto**, estudado nas disciplinas de *Estruturas de Dados Básicas I*.
 Conforme a especificação do **TAD Conjunto**, esta classe deverá fornecer as seguintes operações básicas:
@@ -28,7 +28,12 @@ Adicionalmente, sua implementação do **TAD Conjunto** deverá fornecer as oper
 * *Ordenar*, que retornará um objeto **TAD Sequência** a partir da ordenação dos dados contidos em um objeto do **TAD Conjunto**, utilizando pra isso uma métrica passada como parâmetro.
 * *Agrupar*, que retornará um conjunto de objetos **TAD Partição**, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
 
-## Prazos e pontuação
+## Critérios de avaliação
 
+Sua aplicação será avaliada de forma modular:
 
-
+* Leitura de *dataframes* em arquivos CSV: 1,0 ponto
+* Implementação do **TAD Conjunto** e suas operações básicas: 3,0 pontos
+* Conversão do *dataframe* de entrada para a representação interna do **TAD Conjunto**: 1,0 ponto
+* Implementação da operação *Ordenar*: 1,0 ponto
+* Implementação da operação *Agrupar*: 4,0 pontos
