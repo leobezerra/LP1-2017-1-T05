@@ -25,6 +25,6 @@ Conforme a especificação do **TAD Conjunto**, esta classe deverá fornecer as 
 * *Intersecção*
 
 Adicionalmente, sua implementação do **TAD Conjunto** deverá fornecer as operações abaixo: 
-* **Ordenar**, que retornará um objeto **TAD Sequência** a partir da ordenação dos dados contidos no Conjunto, utilizando pra isso uma métrica passada como parâmetro.
-* **Agrupar**, que retornará um conjunto de objetos **TAD Partição**, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
+* *Ordenar*, que retornará um objeto **TAD Sequência** a partir da ordenação dos dados contidos no Conjunto, utilizando pra isso uma métrica passada como parâmetro.
+* *Agrupar*, que retornará um conjunto de objetos **TAD Partição**, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
 
