@@ -16,7 +16,7 @@ O **TAD Dataframe** é um tipo abstrato de dados usado por linguagens de alto n�
 
 ## Especificação da aplicação
 
-Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em um arquivo CSV como um *dataframe* contedo dois tipos possíveis de dados: numérico e texto.
+Sua aplicação deverá receber como entrada uma base de dados (*dataset*), armazenada em um arquivo CSV como um *dataframe*, contendo dois tipos possíveis de dados: numérico e texto.
 
 Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) **Conjunto**, estudado nas disciplinas de *Estruturas de Dados Básicas I*.
 Conforme a especificação do **TAD Conjunto**, esta classe deverá fornecer as seguintes operações básicas:
