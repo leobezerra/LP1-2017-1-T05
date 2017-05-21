@@ -7,12 +7,11 @@
 
 ## Contexto da aplicação
 
-O **TAD Dataframe** é um tipo abstrato de dados usado por linguagens de alto nível que trabalham com a análise de bases de dados. Dentre as principais características do **TAD Dataframe**, destacam-se:
+O **TAD Dataframe** é um tipo abstrato de dados usado por linguagens de alto nível que trabalham com análise de bases de dados. Dentre as principais características do **TAD Dataframe**, destacam-se:
 
 1. A independência de tipos entre as colunas, tornando o **TAD Dataframe** um tipo composto de dados heterogêneos.
 1. A possibilidade de acessar uma coluna pelo seu nome.
-1. A possibilidade de realizar consultas complexas, utilizando operações lógicas sobre os nomes das colunas.
-1. A possibilidade de aplicar ordenações sobre os dados, baseadas em métricas de ordenação que podem ser aplicadas de forma sequencial a diferentes colunas.
+1. A possibilidade de realizar consultas complexas, utilizando operações lógicas sobre os nomes das colunas e/ou valores das linhas.
 
 ## Especificação da aplicação
 
@@ -24,18 +23,17 @@ Conforme explicado anteriormente, esta classe deverá fornecer as seguintes oper
 * *Adição e remoção de coluna*, sendo a remoção por nome ou índice da coluna.
 * *Adição e remoção de linhas*, sendo a remoção por índices, intervalo ou condição (expressão lógica).
 * *Pesquisa*, tendo como parâmetro uma expressão lógica.
-* *Ordenação*, tendo como parâmetro uma métrica de comparação e o nome das colunas, na ordem em que devem ser avaliadas.
 
-Adicionalmente, sua implementação do **TAD Conjunto** deverá fornecer as operações de estatística abaixo: 
-* *Mediana*, que retornará um objeto **TAD Sequência** a partir da ordenação dos dados contidos em um objeto do **TAD Conjunto**, utilizando pra isso uma métrica passada como parâmetro.
-* *Agrupar*, que retornará um conjunto de objetos **TAD Partição**, utilizando para isto um algoritmo de agrupamento passado como parâmetro. 
+Adicionalmente, sua implementação do **TAD Dataframe** deverá fornecer as seguintes funcionalidades: 
+* *Ordenação*, tendo como parâmetro uma métrica de comparação e o nome das colunas, na ordem em que devem ser avaliadas.
+* *Persistir*, que salva o estado atual do dataframe em um arquivo CSV.
 
 ## Critérios de avaliação
 
 Sua aplicação será avaliada de forma modular:
 
 * Leitura de *dataframes* em arquivos CSV: 1,0 ponto
-* Implementação do **TAD Conjunto** e suas operações básicas: 3,0 pontos
-* Conversão do *dataframe* de entrada para a representação interna do **TAD Conjunto**: 1,0 ponto
-* Implementação da operação *Ordenar*: 1,0 ponto
-* Implementação da operação *Agrupar*: 4,0 pontos
+* Implementação do **TAD Dataframe** e suas operações básicas para um único tipo de dados: 3,0 pontos
+* Implementação do **TAD Dataframe** e suas operações básicas para ambos os tipos de dados: 3,0 pontos
+* Implementação da operação *Ordenar*: 2,0 ponto
+* Persistência de *dataframes* em arquivos CSV: 1,0 ponto
