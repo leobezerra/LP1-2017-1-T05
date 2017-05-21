@@ -25,7 +25,7 @@ Conforme explicado anteriormente, esta classe deverá fornecer as seguintes oper
 * *Pesquisa*, tendo como parâmetro uma expressão lógica.
 
 Adicionalmente, sua implementação do **TAD Dataframe** deverá fornecer as seguintes funcionalidades: 
-* *Ordenação*, tendo como parâmetro uma métrica de comparação e o nome das colunas, na ordem em que devem ser avaliadas.
+* *Ordenar*, tendo como parâmetro uma métrica de comparação e o nome das colunas, na ordem em que devem ser avaliadas.
 * *Persistir*, que salva o estado atual do dataframe em um arquivo CSV.
 
 ## Critérios de avaliação
