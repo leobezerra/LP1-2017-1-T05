@@ -14,7 +14,7 @@ Assim, quando uma aplicação deseja se comunicar através da rede, ela primeiro
 
 ## Especificação da aplicação
 
-Sua aplicação deverá atuar como gerenciador de serviços, recebendo dois arquivos de entrada. O primeiro arquivo, de configuração, deve ser usado para administrar a tabela que armazena as associações entre aplicações, portas, interfaces de rede e endereços IP. Mais precisamente, cada entrada deste arquivo será composta por um código de processo (identificador da aplicação) e um endereço IP (identificador da interface de rede).
+Sua aplicação deverá atuar como um gerenciador de pacotes, recebendo dois arquivos de entrada. O primeiro arquivo, de configuração, deve ser usado para administrar a tabela que armazena as associações entre aplicações, portas, interfaces de rede e endereços IP. Mais precisamente, cada entrada deste arquivo será composta por um código de processo (identificador da aplicação) e um endereço IP (identificador da interface de rede).
 
 Internamente, sua aplicação deverá implementar uma classe **PortForwarding** contendo a tabela de associações e fornecendo as seguintes funcionalidades:
 * *Consultar aplicação/porta*, que retornar a porta associada a uma aplicação (ou a aplicação associada a uma porta). 
