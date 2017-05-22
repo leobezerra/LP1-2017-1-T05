@@ -7,7 +7,7 @@
 
 ## Contexto da aplicação
 
-Dispositivos conectados a uma rede de computadores usando o protocolo TCP/IP devem gerenciar internamente as mensagens (pacotes de dados) que suas aplicações enviam ou recebem através da rede. Para tanto, o modelo TCP/IP determina diferentes códigos de identificação, seguindo à seguinte estrutura hierárquica:
+Dispositivos conectados a uma rede de computadores usando o protocolo TCP/IP devem gerenciar internamente as mensagens (pacotes de dados) que suas aplicações enviam ou recebem através da rede. Para tanto, o modelo TCP/IP determina diferentes códigos de identificação, seguindo a estrutura hierárquica abaixo:
 
 * *Endereço MAC*, um endereço numérico de 6 valores hexadecimais que identifica interfaces de rede (wireless, ethernet, ...) em um dispositivo.
 * *Endereço IP*, um endereço numérico de 128 bits contendo 8 valores hexadecimais, alocados a endereços MAC para que dispositivos possam se comunicar com outros em rede. 
