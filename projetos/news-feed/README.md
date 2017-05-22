@@ -7,7 +7,7 @@
 
 ## Contexto da aplicação
 
-Em uma rede social, um **feed de notícias** é o serviço de *streaming* responsável por assegurar que os posts criados por fontes (produtores de conteúdo, ou  *publishers*)) sejam entregues a usuários (assinantes, ou *subscribers*). Neste contexto, um assinante é um usuário comum, enquanto um produtor pode ser um amigo ou uma página que tenha decidido seguir. Dada a grande quantidade de posts produzidos nas redes sociais atuais, torna-se fundamental coletar as notícias recebidas por um assinante e organizá-las em função da sua data e relevância. 
+Em uma rede social, um **feed de notícias** é o serviço de *streaming* responsável por assegurar que os posts criados por fontes (produtores de conteúdo, ou  *publishers*)) sejam entregues a usuários (assinantes, ou *subscribers*). Neste contexto, um assinante é um usuário comum, enquanto um produtor pode ser um amigo ou uma página que tenha decidido seguir. Dada a grande quantidade de posts produzidos nas redes sociais atuais, torna-se fundamental coletar as notícias recebidas por um assinante e organizá-las em função da sua data e relevância. Além disso, é importante confirmar a integridade da mensagem recebida, assegurando que ela não tenha sido corrompida antes de chegar ao assinante. 
 
 ## Especificação da aplicação
 
