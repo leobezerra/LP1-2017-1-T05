@@ -24,14 +24,17 @@ Note que sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs
 
 Adicionalmente, sua aplicação deverá implementar as seguintes heurísticas de ordenação:
 * *Notícias mais recentes*, onde as 10 notícias criadas a menos tempo são exibidas.
-* *Notícias de contatos mais recentemente ativos*, onde os produtores são inicialmente rankeados em função da data de sua última interação com o assinante. Em seguida, as notícias criadas por estes produtores são adicionadas à visualização, até totalizar 10 mensagens.
+* *Notícias de contatos mais recentemente ativos*, onde os produtores são inicialmente rankeados em função da data de sua última interação com o assinante. Em seguida, as notícias criadas por estes produtores ao longo do último dia são adicionadas à visualização, até totalizar 10 mensagens.
 * *Notícias mais relevante*, onde as notícias são rankeadas em função de sua relevância. Esta métrica é calculada como a média ponderada da frequência de interações entre o assinante e o produtor da notícia ao longo dos últimos 5, 30 e 365 dias, com pesos 6, 4 e 2, respectivamente. Uma vez rankeados os produtores, as notícias de cada um são adicionadas à visualização 
 
 ## Critérios de avaliação
 
 Sua aplicação será avaliada de forma modular:
 
-* Leitura dos arquivos de entrada em formato JSON: 1,0 ponto.
+* Leitura dos arquivos de entrada em formato JSON: 2,0 pontos.
 * Implementação da classe **NewsFeed** e suas funcionalidades básicas *Renderizar* e *Frequência*: 4,0 pontos.
 * Implementação da funcionalidade *Ordenar*: 4,0 pontos.
-* Uso dos **TADs Fila, Sequência** e/ou **Conjunto**: 1,0 ponto.
+
+---
+
+*Anterior:* [Dataframes](../dataframes) | *Próximo:* [Servidor DNS](../dns-server/)
