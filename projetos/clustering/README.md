@@ -37,3 +37,7 @@ Sua aplicação será avaliada de forma modular:
 * Conversão do *dataframe* de entrada para a representação interna do **TAD Conjunto**: 1,0 ponto
 * Implementação da operação *Ordenar*: 1,0 ponto
 * Implementação da operação *Agrupar*: 4,0 pontos
+
+---
+
+Próximo: [Dataframes](../dataframes/)
