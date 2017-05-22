@@ -8,7 +8,7 @@
 ## Contexto da aplicação
 
 Algoritmos de análise de dados são utilizados para obter conhecimento a partir de bases de informação. Em síntese,
-um algoritmo de agrupamento é um tipo de algoritmo de análise que busca similaridades entre dados. Ao construir subconjuntos partições
+um algoritmo de agrupamento é um tipo de algoritmo de análise que busca similaridades entre dados. Ao construir subconjuntos
 com características em comum (partições, ou *clusters*), é possível entender padrões nos dados.
 
 ## Especificação da aplicação
