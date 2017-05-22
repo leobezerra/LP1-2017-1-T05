@@ -9,7 +9,7 @@
 
 Dispositivos conectados a uma rede de computadores usando o protocolo TCP/IP devem gerenciar internamente as mensagens (pacotes de dados) que suas aplicações enviam ou recebem através da rede. Para tanto, o modelo TCP/IP determina diferentes códigos de identificação, seguindo a estrutura hierárquica abaixo:
 
-* *Endereço MAC*, um endereço numérico de 6 bytes, representado como 6 valores em hexadecimal, que identifica interfaces de rede (wireless, ethernet, ...) em um dispositivo.
+* *Endereço MAC*, um endereço numérico de 6 bytes, representado como 6 valores em hexadecimal, que identifica fisicamente interfaces de rede (wireless, ethernet, ...) pressentes em um dispositivo.
 * *Endereço IP*, um endereço numérico de 16 bytes, representado como 8 valores em hexadecimal, alocados a endereços MAC para que dispositivos possam se comunicar com outros em diferentes redes. 
 * *Porta*, um endereço numérico de 2 bytes, representado como um único valor em decimal, usado para identificar aplicações vinculadas a um determinado endereço IP. 
 
