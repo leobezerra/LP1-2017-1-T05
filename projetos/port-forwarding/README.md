@@ -13,25 +13,19 @@ Dispositivos conectados a uma rede de computadores usando o protocolo TCP/IP dev
 * *Endereço IP*, um endereço numérico de 16 bytes, representado como 8 valores em hexadecimal, alocados a endereços MAC para que dispositivos possam se comunicar com outros em diferentes redes. 
 * *Porta*, um endereço numérico de 2 bytes, representado como um único valor em decimal, usado para identificar aplicações vinculadas a um determinado endereço IP. 
 
-Assim, quando uma aplicação deseja se comunicar através da rede, ela primeiro deve se registrar, escolhendo uma interface de rede e sendo vinculada a uma porta. Uma vez registrada, é responsabilidade do dispositivo gerenciar as mensagens que a aplicação envia e recebe, identificando-as com o endereço IP da interface de rede selecionada e com a porta associada à aplicação.
+Assim, quando uma aplicação deseja se comunicar através da rede, ela primeiro deve se registrar, escolhendo uma interface de rede e sendo vinculada a uma porta. Uma vez registrada, é responsabilidade do dispositivo gerenciar as mensagens que a aplicação envia e recebe, identificando-as com o endereço IP da interface de rede selecionada e com a porta associada à aplicação. Além disso, a nível de dispositivo uma aplicação é identificada pelo seu código de processo.
 
 ## Especificação da aplicação
 
-Sua aplicação deverá receber como entrada um conjunto de notícias e um arquivo de configuração. Mais precisamente, cada notícia apresenta-se em formato JSON (*JavaScript Object Notation*), especificando o código de identificação do produtor, o conteúdo da mensagem e a data/hora de criação da notícia. 
+Sua aplicação deverá atuar como gerenciador de serviços, recebendo dois arquivos de entrada. O primeiro arquivo, de configuração, deve ser usado para administrar a tabela que armazena as associações entre aplicações, portas, interfaces de rede e endereços IP. Mais precisamente, cada entrada deste arquivo será composta por um código de processo (identificador da aplicação) e um endereço IP (identificador da interface de rede).
 
-Por sua vez, o arquivo de configuração também contém entradas em formato JSON, divididas, porém, em duas categorias. A primeira entrada informa o critério de rankeamento das notícias, assim como a taxa de atualização do feed de notícias. As demais entradas especificam os relacionamentos existentes entre o assinante e os produtores de contéudo, detalhando o código de identificação do produtor, a última vez em que houve interação entre o usuário e o produtor e a frequência de interações ao longo dos últimos 5, 30 e 365 dias. 
+Internamente, sua aplicação deverá implementar uma classe **PortForwarding** contendo a tabela de associações e fornecendo as seguintes funcionalidades:
+* *Consultar aplicação/porta*, que retornar a porta associada a uma aplicação (ou a aplicação associada a uma porta). 
+* *Registrar aplicação*, que tanto pode tentar associar uma aplicação a uma porta passada como parâmetro, como pode escolher uma porta para associar a aplicação caso nenhuma porta seja informada.
+* *Remover aplicação/porta*, que permite desassociar uma aplicação de uma porta, seja pelo identificador da aplicação ou da porta.
+* *Alterar porta*, que permite trocar a porta usada por uma aplicação para uma nova porta, desde que a mesma esteja livre.
 
-Internamente, sua aplicação deverá implementar uma classe **NewsFeed**, contendo uma lista de notícias e implementando as seguintes funcionalidades: 
-* *Renderizar*, que apresenta na tela 10 notícias. 
-* *Frequência*, que permite configurar a velocidade com a qual a operação *Renderizar* é chamada.
-* *Ordenar*, que permite configurar a heurística usada para rankear as notícias.
-
-Note que sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs Fila, Sequência** e/ou **Conjunto**, estudados na disciplina *Estruturas de Dados Básicas I*. 
-
-Adicionalmente, sua aplicação deverá implementar as seguintes heurísticas de ordenação:
-* *Notícias mais recentes*, onde as 10 notícias criadas a menos tempo são exibidas.
-* *Notícias de contatos mais recentemente ativos*, onde os produtores são inicialmente rankeados em função da data de sua última interação com o assinante. Em seguida, as notícias criadas por estes produtores ao longo do último dia são adicionadas à visualização, até totalizar 10 mensagens.
-* *Notícias mais relevante*, onde as notícias são rankeadas em função de sua relevância. Esta métrica é calculada como a média ponderada da frequência de interações entre o assinante e o produtor da notícia ao longo dos últimos 5, 30 e 365 dias, com pesos 6, 4 e 2, respectivamente. Uma vez rankeados os produtores, as notícias de cada um são adicionadas à visualização 
+O segundo arquivo de entrada é o buffer de rede, contendo pacotes escritos segundo o formato IPv6. Sua implementação deverá, então, extrair, armazenar em buffer e entregar os pacotes às aplicações correspondentes, executando para isso consultas à tabela de associações. No entanto, sua aplicação deverá manter buffers para cada interface de rede, permitindo ainda que pacotes de vídeo do tipo "video/mp4" sejam entregues antes dos demais pacotes. Note que sua implementação da classe **PortForwarding** deverá fazer uso do **TADs Fila**, estudado na disciplina *Estruturas de Dados Básicas I*. Adicionalmente, será necessário entender o conceito do **TAD Fila de prioridade**.
 
 ## Critérios de avaliação
 
@@ -43,4 +37,4 @@ Sua aplicação será avaliada de forma modular:
 
 ---
 
-*Anterior:* [Dataframes](../dataframes) | *Próximo:* [Servidor DNS](../dns-server/)
+*Anterior:* [Feed de notícias](../news-feed/) | *Próximo:* [Projetos](../)
