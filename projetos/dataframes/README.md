@@ -3,9 +3,7 @@
 
 ---
 
-# Dataframes
-
-## Contexto da aplicação
+## Dataframes
 
 O **TAD Dataframe** é um tipo abstrato de dados usado por linguagens de alto nível que trabalham com análise de bases de dados. Dentre as principais características do **TAD Dataframe**, destacam-se:
 

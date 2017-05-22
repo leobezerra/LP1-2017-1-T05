@@ -3,7 +3,7 @@
 
 ---
 
-# Projeto de Implementação
+## Projeto de Implementação
 
 Abaixo, as descrições das diferentes alternativas de enunciado disponíveis para o projeto de implementação final da disciplina.
 

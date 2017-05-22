@@ -3,9 +3,7 @@
 
 ---
 
-# Redirecionamento de portas
-
-## Contexto da aplicação
+## Redirecionamento de portas
 
 Dispositivos conectados a uma rede de computadores usando o protocolo TCP/IP devem gerenciar internamente as mensagens (pacotes de dados) que suas aplicações enviam ou recebem através da rede. Para tanto, o modelo TCP/IP determina diferentes códigos de identificação, dentre os quais se destacam:
 
