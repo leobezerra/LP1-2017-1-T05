@@ -7,7 +7,7 @@
 
 ## Contexto da aplicação
 
-Em uma rede social, um **feed de notícias** é o serviço de *streaming* responsável por assegurar que os posts criados por fontes (produtores de conteúdo, ou  *publishers*)) sejam entregues a usuários (assinantes, ou *subscribers*). Neste contexto, um assinante é um usuário comum, enquanto um produtor pode ser um amigo ou uma página que tenha decidido seguir. Dada a grande quantidade de posts produzidos nas redes sociais atuais, torna-se fundamental coletar as notícias recebidas por um assinante e organizá-las em função da sua data e relevância. 
+Em uma rede social, um **feed de notícias** é o serviço de *streaming* responsável por assegurar que os posts criados por fontes (produtores de conteúdo, ou  *publishers*) sejam entregues a usuários (assinantes, ou *subscribers*). Neste contexto, um assinante é um usuário comum, enquanto um produtor pode ser um amigo ou uma página que tenha decidido seguir. Dada a grande quantidade de posts produzidos nas redes sociais atuais, torna-se fundamental coletar as notícias recebidas por um assinante e organizá-las em função da sua data e relevância. 
 
 ## Especificação da aplicação
 
@@ -20,7 +20,12 @@ Internamente, sua aplicação deverá implementar uma classe **NewsFeed**, conte
 * *Frequência*, que permite configurar a velocidade com a qual a operação *Renderizar* é chamada.
 * *Ordenar*, que permite configurar a heurística usada para rankear as notícias.
 
-Adicionalmente, sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs Fila, Sequência** e/ou **Conjunto**, estudados na disciplina *Estruturas de Dados Básicas I*.
+Note que sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs Fila, Sequência** e/ou **Conjunto**, estudados na disciplina *Estruturas de Dados Básicas I*. 
+
+Adicionalmente, sua aplicação deverá implementar as seguintes heurísticas de ordenação:
+* *Notícias mais recentes*, onde as 10 notícias criadas a menos tempo são exibidas.
+* *Notícias de contatos mais recentemente ativos*, onde os produtores são inicialmente rankeados em função da data de sua última interação com o assinante. Em seguida, as notícias criadas por estes produtores são adicionadas à visualização, até totalizar 10 mensagens.
+* *Notícias mais relevante*, onde as notícias são rankeadas em função de sua relevância. Esta métrica é calculada como a média ponderada da frequência de interações entre o assinante e o produtor da notícia ao longo dos últimos 5, 30 e 365 dias, com pesos 6, 4 e 2, respectivamente. Uma vez rankeados os produtores, as notícias de cada um são adicionadas à visualização 
 
 ## Critérios de avaliação
 
