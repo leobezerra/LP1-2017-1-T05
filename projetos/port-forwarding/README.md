@@ -25,15 +25,15 @@ Internamente, sua aplicação deverá implementar uma classe **PortForwarding** 
 * *Remover aplicação/porta*, que permite desassociar uma aplicação de uma porta, seja pelo identificador da aplicação ou da porta.
 * *Alterar porta*, que permite trocar a porta usada por uma aplicação para uma nova porta, desde que a mesma esteja livre.
 
-O segundo arquivo de entrada é o buffer de rede, contendo pacotes escritos segundo o formato IPv6. Sua implementação deverá, então, extrair, armazenar em buffer e entregar os pacotes às aplicações correspondentes, executando para isso consultas à tabela de associações. No entanto, sua aplicação deverá manter buffers para cada interface de rede, permitindo ainda que pacotes de vídeo do tipo "video/mp4" sejam entregues antes dos demais pacotes. Note que sua implementação da classe **PortForwarding** deverá fazer uso do **TADs Fila**, estudado na disciplina *Estruturas de Dados Básicas I*. Adicionalmente, será necessário entender o conceito do **TAD Fila de prioridade**.
+O segundo arquivo de entrada é o buffer de rede, contendo pacotes escritos segundo o formato IPv6. Sua implementação deverá, então, extrair, armazenar em buffer e entregar os pacotes às aplicações correspondentes, executando para isso consultas à tabela de associações. No entanto, sua aplicação deverá manter buffers para cada interface de rede, permitindo ainda que pacotes de vídeo do tipo "video/mp4" sejam entregues antes dos demais pacotes. Note que sua implementação da classe **PortForwarding** deverá fazer uso do **TAD Fila**, estudado na disciplina *Estruturas de Dados Básicas I*. Adicionalmente, será necessário entender o conceito do **TAD Fila de prioridade**.
 
 ## Critérios de avaliação
 
 Sua aplicação será avaliada de forma modular:
 
-* Leitura dos arquivos de entrada em formato JSON: 2,0 pontos.
-* Implementação da classe **NewsFeed** e suas funcionalidades básicas *Renderizar* e *Frequência*: 4,0 pontos.
-* Implementação da funcionalidade *Ordenar*: 4,0 pontos.
+* Implementação da classe **PortForwarding** e suas funcionalidades básicas: 4,0 pontos.
+* Leitura do buffer de rede: 2,0 pontos.
+* Manutenção das múltiplas filas de prioridade: 4,0 pontos.
 
 ---
 
