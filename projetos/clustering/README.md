@@ -13,7 +13,7 @@ com características em comum (partições, ou *clusters*), é possível entende
 
 Sua aplicação deverá receber como entrada um conjunto de dados, armazenado em um arquivo CSV como um *dataframe* de números reais.
 
-Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) **Conjunto**, estudado nas disciplinas de *Estruturas de Dados Básicas I*.
+Internamente, sua aplicação deverá representar os dados usando o tipo abstrato de dados (TAD) **Conjunto**, estudado na disciplina *Estruturas de Dados Básicas I*.
 Conforme a especificação do **TAD Conjunto**, esta classe deverá fornecer as seguintes operações básicas:
 * *Inserção*
 * *Remoção*
