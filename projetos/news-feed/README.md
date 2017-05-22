@@ -26,8 +26,5 @@ Adicionalmente, sua implementação da classe **NewsFeed** deverá fazer uso dos
 
 Sua aplicação será avaliada de forma modular:
 
-* Leitura do **TAD Dataframe** a partir de arquivos CSV: 1,0 ponto
-* Implementação do **TAD Dataframe** e suas operações básicas para um único tipo de dados: 3,0 pontos
-* Implementação do **TAD Dataframe** e suas operações básicas para ambos os tipos de dados: 3,0 pontos
-* Implementação da operação *Ordenar*: 2,0 ponto
-* Persistência do **TAD Dataframe** em arquivos CSV: 1,0 ponto
+* Leitura dos arquivos de entrada em formato JSON: 1,0 ponto
+* Implementação da classe **NewsFeed** e suas funcionalidades básicas: 6,0 pontos
