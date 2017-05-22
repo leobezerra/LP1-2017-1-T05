@@ -37,3 +37,7 @@ Sua aplicação será avaliada de forma modular:
 * Implementação do **TAD Dataframe** e suas operações básicas para ambos os tipos de dados: 3,0 pontos
 * Implementação da operação *Ordenar*: 2,0 ponto
 * Persistência do **TAD Dataframe** em arquivos CSV: 1,0 ponto
+
+---
+
+*Anterior:* [Análise de agrupamentos](../clustering) | *Próximo:* [Feed de notícias](../news-feed/)
