@@ -33,5 +33,5 @@ Sua aplicação será avaliada de forma modular:
 
 * Leitura dos arquivos de entrada em formato JSON: 1,0 ponto.
 * Implementação da classe **NewsFeed** e suas funcionalidades básicas *Renderizar* e *Frequência*: 4,0 pontos.
-* Implementação da funcionalidade *Ordenar*: 3,0 pontos.
-* Uso dos **TADs Fila, Sequência** e/ou **Conjunto**: 2,0 pontos.
+* Implementação da funcionalidade *Ordenar*: 4,0 pontos.
+* Uso dos **TADs Fila, Sequência** e/ou **Conjunto**: 1,0 ponto.
