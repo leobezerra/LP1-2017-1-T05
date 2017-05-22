@@ -20,11 +20,13 @@ Internamente, sua aplicação deverá implementar uma classe **NewsFeed**, conte
 * *Frequência*, que permite configurar a velocidade com a qual a operação *Renderizar* é chamada.
 * *Ordenar*, que permite configurar a heurística usada para rankear as notícias.
 
-Adicionalmente, sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs Fila, Sequência** e **Conjunto**, estudados na disciplina *Estruturas de Dados Básicas I*.
+Adicionalmente, sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs Fila, Sequência** e/ou **Conjunto**, estudados na disciplina *Estruturas de Dados Básicas I*.
 
 ## Critérios de avaliação
 
 Sua aplicação será avaliada de forma modular:
 
-* Leitura dos arquivos de entrada em formato JSON: 1,0 ponto
-* Implementação da classe **NewsFeed** e suas funcionalidades básicas: 6,0 pontos
+* Leitura dos arquivos de entrada em formato JSON: 1,0 ponto.
+* Implementação da classe **NewsFeed** e suas funcionalidades básicas *Renderizar* e *Frequência*: 4,0 pontos.
+* Implementação da funcionalidade *Ordenar*: 3,0 pontos.
+* Uso dos **TADs Fila, Sequência** e/ou **Conjunto**: 2,0 pontos.
