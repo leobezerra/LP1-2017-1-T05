@@ -13,7 +13,7 @@ Dispositivos conectados a uma rede de computadores usando o protocolo TCP/IP dev
 * *Endereço IP*, um endereço numérico de 16 bytes, representado como 8 valores em hexadecimal, alocados a endereços MAC para que dispositivos possam se comunicar com outros em rede. 
 * *Porta*, um endereço numérico de 2 bytes, representado como um único valor em decimal, usado para identificar aplicações vinculadas a um determinado endereço IP. 
 
-Assim, quando uma aplicação deseja se comunicar através da rede, ela primeiro deve se registrar, escolhendo uma interface de rede e sendo vinculado a uma porta. Uma vez registrado, é responsabilidade do dispositivo gerenciar as mensagens que uma aplicação envia e recebe, identificando-as com o endereço IP da interface de rede selecionada e com a porta associada à aplicação.
+Assim, quando uma aplicação deseja se comunicar através da rede, ela primeiro deve se registrar, escolhendo uma interface de rede e sendo vinculada a uma porta. Uma vez registrada, é responsabilidade do dispositivo gerenciar as mensagens que a aplicação envia e recebe, identificando-as com o endereço IP da interface de rede selecionada e com a porta associada à aplicação.
 
 ## Especificação da aplicação
 
