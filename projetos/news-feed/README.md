@@ -20,7 +20,7 @@ Internamente, sua aplicação deverá implementar uma classe **NewsFeed**, conte
 * *Frequência*, que permite configurar a velocidade com a qual a operação *Renderizar* é chamada.
 * *Ordenar*, que permite configurar a heurística usada para rankear as notícias.
 
-Adicionalmente, sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs Fila, Sequência** e **Conjunto**.
+Adicionalmente, sua implementação da classe **NewsFeed** deverá fazer uso dos **TADs Fila, Sequência** e **Conjunto**, estudados na disciplina *Estruturas de Dados Básicas I*.
 
 ## Critérios de avaliação
 
