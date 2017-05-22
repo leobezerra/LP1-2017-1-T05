@@ -37,4 +37,4 @@ Sua aplicação será avaliada de forma modular:
 
 ---
 
-*Anterior:* [Dataframes](../dataframes) | *Próximo:* [Servidor DNS](../dns-server/)
+*Anterior:* [Dataframes](../dataframes) | *Próximo:* [Redirecionamento de Portas](../port-forwarding/)
