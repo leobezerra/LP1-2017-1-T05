@@ -8,7 +8,7 @@
 Dispositivos conectados a uma rede de computadores usando o protocolo TCP/IP devem gerenciar internamente as mensagens (pacotes de dados) que suas aplicações enviam ou recebem através da rede. Para tanto, o modelo TCP/IP determina diferentes códigos de identificação, dentre os quais se destacam:
 
 * *Endereços IP*, endereços numéricos de 16 bytes, representados como 8 valores em hexadecimal, usados a nível de rede para que dispositivos possam se comunicar entre si. Em particular, cada interface de rede de um dispositivo recebe um endereço IP. 
-* *Portas*, um endereço numérico de 2 bytes, representado como um único valor em decimal, usado para identificar aplicações vinculadas a um determinado endereço IP. Além disso, a nível de dispositivo, uma aplicação é identificada pelo seu código de processo.
+* *Portas*, endereços numéricos de 2 bytes, representados como valores em decimal, usadas a nível do dispositivo para identificar as comunicações relacionadas a uma aplicação. Mais precisamente, uma aplicação é identificada pelo seu código de processo e vinculada a uma porta e endereço IP (interface de rede). 
 
 Assim, quando uma aplicação deseja se comunicar através da rede, ela primeiro deve se registrar, escolhendo uma interface de rede e sendo vinculada a uma porta. Uma vez registrada, é responsabilidade do dispositivo gerenciar as mensagens que a aplicação envia e recebe, identificando-as com o endereço IP da interface de rede selecionada e com a porta associada à aplicação. 
 
