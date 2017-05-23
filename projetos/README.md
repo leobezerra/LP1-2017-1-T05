@@ -9,7 +9,11 @@ Abaixo, as descrições das diferentes alternativas de enunciado disponíveis pa
 
 ---
 
-1. [**Análise de agrupamentos**](clustering/README.md)
-1. [**Dataframes**](dataframes/README.md)
-1. [**Feed de notícias**](news-feed/README.md)
-1. [**Redirecionamento de portas**](port-forwarding/README.md)
+1. [**Análise de agrupamentos**](clustering)
+1. [**Dataframes**](dataframes)
+1. [**Feed de notícias**](news-feed)
+1. [**Redirecionamento de portas**](port-forwarding)
+
+---
+
+Consulte a [listagem dos grupos](groups)
