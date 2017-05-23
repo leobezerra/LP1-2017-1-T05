@@ -16,4 +16,4 @@ Abaixo, as descrições das diferentes alternativas de enunciado disponíveis pa
 
 ---
 
-Consulte a [listagem dos grupos](groups)
+Consulte a [listagem dos grupos](groups).
