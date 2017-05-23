@@ -27,4 +27,4 @@
 * Jeckson Victor De Oliveira
 * Joseh Augusto Dantas Salgado Pinto
 
-*Anterior*: [Projetos](../) | *Próximo:* [Análise de agrupamentos](../clustering/)
+*Anterior*: [Projetos](../) |
