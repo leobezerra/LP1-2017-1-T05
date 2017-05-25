@@ -1,6 +1,7 @@
 ## Listagem dos grupos 
 
-1. Análise de agrupamentos
+
+### Análise de agrupamentos
 * Luís Eduardo Anunciado Silva
 * Renan Bezerra Kimura
 * Luan Santos De Carvalho
