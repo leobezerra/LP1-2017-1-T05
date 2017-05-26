@@ -35,3 +35,7 @@ Abaixo, os materiais de consulta para cada tópico de aula.
   * [Roteiro](laboratorio/ios/roteiro.pdf)
 6. **Aulas 19 e 20 - Introdução a OO (polimorfismo / iostream)**
   * [Roteiro](laboratorio/iostream/roteiro.pdf)
+
+---
+
+Confira a descrição dos [projetos de implementação](projetos/).
