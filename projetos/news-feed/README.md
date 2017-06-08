@@ -35,8 +35,8 @@ Sua aplicação será avaliada de forma modular:
 
 ## Arquivos de teste
 
-* Arquivos de configuração: [config1.json](config1.json) | [config2.json](config2.json) | [config3.json](config3.json)
-* Arquivo de entrada: [news.json](news.json)
+Arquivos de configuração | [config1.json](config1.json) | [config2.json](config2.json) | [config3.json](config3.json)
+Arquivo de entrada | [news.json](news.json)
 
 ---
 
