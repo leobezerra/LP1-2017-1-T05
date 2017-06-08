@@ -36,6 +36,10 @@ Sua aplicação será avaliada de forma modular:
 * Implementação da operação *Ordenar*: 1,0 ponto
 * Implementação da operação *Agrupar*: 4,0 pontos
 
+## Arquivos de teste
+
+* Datasets | [iris.csv](iris.csv) | [wine.csv](wine.csv)
+
 ---
 
 *Anterior*: [Projetos](../) | *Próximo:* [Dataframes](../dataframes/)
