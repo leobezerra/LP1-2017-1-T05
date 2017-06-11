@@ -22,13 +22,13 @@ Internamente, sua aplicação deverá implementar uma classe **PortForwarding** 
 * *Remover aplicação/porta*, que permite desassociar uma aplicação de uma porta, seja pelo identificador da aplicação ou da porta.
 * *Alterar porta*, que permite trocar a porta usada por uma aplicação para uma nova porta, desde que a mesma esteja livre.
 
-O segundo arquivo de entrada é o buffer de rede, contendo pacotes escritos segundo o formato IPv6. Sua implementação deverá:
+O segundo arquivo de entrada é o buffer de rede, contendo datagramas escritos segundo o formato UDP + IPv4. Sua implementação deverá:
 
 * *Desempacotar* uma mensagem, identificando a interface de redes e o tipo da mensagem.
 * *Gerenciar buffers*, armazenando as mensagens identificadas em filas correspondentes às diferentes interfaces. 
 * *Encaminhar* mensagens, analisando as próximas mensagens a sair das filas para identificar o conteúdo da mensagem e a aplicação que deve recebê-la.
   
-Além disso, sua aplicação deverá permitir que pacotes de vídeo do tipo "*video/mp4*" sejam entregues antes dos demais pacotes. Note que sua implementação da classe **PortForwarding** deverá fazer uso do **TAD Fila**, estudado na disciplina *Estruturas de Dados Básicas I*. Adicionalmente, será necessário entender o conceito do **TAD Fila de prioridade**.
+Além disso, sua aplicação deverá permitir que pacotes de encaminhamento expresso sejam entregues antes dos demais pacotes. Note que sua implementação da classe **PortForwarding** deverá fazer uso do **TAD Fila**, estudado na disciplina *Estruturas de Dados Básicas I*. Adicionalmente, será necessário entender o conceito do **TAD Fila de prioridade**.
 
 ## Critérios de avaliação
 
