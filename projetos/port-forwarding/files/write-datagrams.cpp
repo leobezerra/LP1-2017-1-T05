@@ -12,7 +12,7 @@ void write_random_byte(ushort size, bool end = false) {
     if (end) std::cout << std::endl;
 }
 
-void write_datagram(const std::string & ip, ushort porta, ushort pid) {
+void write_datagram(const std::string & ip, ushort pid, ushort port) {
     write_random_byte(2);
 }
 
@@ -26,23 +26,32 @@ void write_ihl_word(ushort ihl) {
 int main (int argc, char * argv[]) {
     std::cout.width(2);
     std::cout.fill('0');
-    std::cout.setf(std::ios::hex, std::ios::basefield);
+    //std::cout.setf(std::ios::hex, std::ios::basefield);
 
     std::vector<std::string> ips;
-    std::vector<ushort> apps;
+    std::vector<ushort> pids;
     std::vector<ushort> ports;
 
     std::string line;
     while (std::getline(std::cin, line)) {
         std::istringstream in(line);
         std::string field;
-        if (std::getline(in, field, ',')) ips.push_back(field);
-        if (std::getline(in, field, ',')) apps.push_back(std::stoi(field));
+        if (std::getline(in, field, ',')) pids.push_back(std::stoi(field));
         if (std::getline(in, field, ',')) ports.push_back(std::stoi(field));
+        if (std::getline(in, field, ',')) ips.push_back(field);
     }
 
-    for (ushort i = 0; i < ips.size(); i++) 
-        std::cout << ips[i] << "," << apps[i] << ","  << ports[i] << std::endl;
+    for (ushort i = 0; i < ips.size(); i++)
+        std::cout << pids[i] << "," << ports[i] << "," << ips[i] << std::endl;
+    std::cout << std::endl;
+    return 1;
+
+    srand(1);
+    ushort buffer_size = std::atoi(argv[1]);
+    for (ushort i = 0; i < buffer_size; i++) {
+        ushort idx = rand() % ips.size();
+        write_datagram(ips[idx], pids[idx], ports[idx]);
+    }
 
     return 1;
 }

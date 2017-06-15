@@ -40,4 +40,4 @@ for i in range(0, nb_configs):
     if cfg not in cfg_list:
       cfg_list.append(cfg)
       break
-print("\n".join(["{},{},{}".format(x[0], x[1][0], x[1][1]) for x in cfg_list]))
+print("\n".join(["{},{},{}".format(x[1][0], x[1][1], x[0]) for x in cfg_list]))
