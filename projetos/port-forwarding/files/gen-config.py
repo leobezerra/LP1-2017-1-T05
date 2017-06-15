@@ -8,7 +8,7 @@ nb_apps = int(argv[3])
 ip_list = []
 for i in range(0, nb_ips):
   while True:
-    ip = "192.168,0.{}".format(randint(0,256))
+    ip = "192.168.0.{}".format(randint(0,256))
     if ip not in ip_list:
       ip_list.append(ip)
       break
