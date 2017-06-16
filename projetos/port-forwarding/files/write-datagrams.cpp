@@ -23,9 +23,9 @@ std::string string_to_hex(const std::string& input)
 }
 
 void write_random_byte(ushort size, bool end = false) {
-    std::cout << std::setw(2) << (rand() % 256);
-    for (ushort i = 1; i < size; i++) 
-        std::cout << " " << std::setw(2) << (rand() % 256);
+    //std::cout << std::setw(2) << (rand() % 256);
+    for (ushort i = 0; i < size; i++) 
+        std::cout << std::setw(2) << (rand() % 256) << (i + 1 == size ? "" : " ");
     if (end) std::cout << std::endl;
     else std::cout << " ";
 }
@@ -36,7 +36,7 @@ void write_ihl_word(ushort ihl, ushort total_length) {
     iword += ihl;
     std::cout << (int) iword << " "; 
 
-    char dscp = ((rand() % 10) < 10 ? 46 : 0);
+    char dscp = ((rand() % 10) < 3 ? 46 : 0);
     char ecn = rand() % 4;
     char dscp_ecn = (dscp << 2) + ecn;
     std::cout << std::setw(2) << (int) (dscp_ecn & 0xff) << " "; 
@@ -74,6 +74,39 @@ void write_options(ushort ihl) {
     if (ihl > 6 && ihl % 2) write_random_byte(4);
 }
 
+void write_hex(const std::string & str, ushort start, ushort size, ushort offset = 0) {
+    for (ushort i = start * 2; i < (start + size) * 2; i += 2)
+        std::cout << str[i] << str[i+1] << ((i/2 + 1 + offset) % 8 ? " " : "\n");
+}
+
+void write_data(ushort ihl, ushort total_length) {
+    std::string str;
+    for (ushort i = ihl * 4; i < total_length; i++)
+        str.push_back((char) ((rand() % 94) + 32));
+    std::cerr << "data: " << str << std::endl;
+    std::string hex = string_to_hex(str); 
+
+    ushort offset = 0;
+    if (ihl % 2) {
+        if (total_length >= ihl * 4 + 4) {
+            write_hex(hex, 0, 4, 4);
+            offset = 4;
+        }
+        else {
+            offset = total_length - ihl * 4;
+            write_hex(hex, 0, offset);
+        }
+    }
+
+    ushort remaining_data = total_length - (ihl * 4 + offset);
+    if (!remaining_data) return;
+    ushort total_words = remaining_data / 8;
+    for (ushort i = 0; i < total_words; i++)
+        write_hex(hex, i * 8 + offset, 8, offset);
+    if (remaining_data % total_words)
+        write_hex(hex, total_words * 8 + offset, remaining_data % total_words, offset);
+}
+
 void write_datagram(const std::string & ip, ushort port) {
     ushort ihl = (rand() % 3) + 5;
     ushort total_length = (rand() % 50) + 40;
@@ -84,6 +117,8 @@ void write_datagram(const std::string & ip, ushort port) {
     write_ip(ip);
     write_options(ihl);
     write_udp(port, ihl % 2);
+
+    write_data(ihl, total_length);
 }
 
 int main (int argc, char * argv[]) {
