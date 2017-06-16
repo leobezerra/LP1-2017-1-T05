@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <vector>
 #include <string>
+#include <queue>
 
 #include "portforward.h"
 #include "datagrams.h"
@@ -22,7 +23,7 @@ std::istream& operator>> (std::istream & stin, PortForward & pf) {
         if (std::getline(in, field, ',')) port = std::stoi(field);
         if (std::getline(in, field, ',')) ip = field;
         TableEntry entry(ip, port, pid);
-        pf.portTable.insert(entry);
+        pf.portTable.insert(std::make_pair(entry, std::priority_queue<Message>()));
     }
 
     return stin; 
@@ -44,12 +45,19 @@ void PortForward::parse_buffer(const std::string & fname) {
         msgs.push_back(msg);
     }
     while (1);
-    for (ushort i = 0; i < msgs.size(); i++) 
-        std::cout << msgs[i] << std::endl;
+
+    for (ushort i = 0; i < msgs.size(); i++) {
+        TableEntry key(msgs[i].getTableEntry());
+        Message msg(msgs[i].getMessage());
+        portTable.at(key).push(msg);
+    }
 }
 
 std::ostream & operator<< (std::ostream & out, PortForward & pf) {
-    for (std::unordered_set<TableEntry>::iterator itr = pf.portTable.begin(); itr != pf.portTable.end(); itr++)
-        std::cout << *itr << std::endl;
+    for (auto itr = pf.portTable.begin(); itr != pf.portTable.end(); itr++)
+    {
+        std::cout << itr->first << ": ";
+        std::cout << "[" << itr->second.size() << "]" << std::endl;
+    }
     return out;
 }

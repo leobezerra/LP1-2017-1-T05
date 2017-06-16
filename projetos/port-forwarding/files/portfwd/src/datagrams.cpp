@@ -40,7 +40,7 @@ std::istream& operator>> (std::istream & stin, Datagram & dg) {
     in.ignore(6);
     ushort porta_1, porta_2;
     in >> porta_1 >> porta_2;
-    dg.porta = (porta_1 << 8) + porta_2;
+    dg.port = (porta_1 << 8) + porta_2;
 
     short total_data = dg.total - dg.ihl * 4;
     ushort tmp;
@@ -73,7 +73,7 @@ std::ostream & operator<< (std::ostream & out, const Datagram & dg) {
     out << ", total_length: " << dg.total << std::endl;
 
     out << "ip: " << dg.ip;
-    out << ", port: " << dg.porta << std::endl; 
+    out << ", port: " << dg.port << std::endl; 
  
     out << "data: " << dg.data << std::endl;
     return out;

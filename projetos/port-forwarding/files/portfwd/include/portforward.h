@@ -1,7 +1,13 @@
+#ifndef __PORTFWD_H__
+#define __PORTFWD_H__
+
 #include <iostream>
 #include <string>
 #include <utility>
-#include <unordered_set>
+#include <unordered_map>
+#include <queue>
+
+#include "messages.h"
 
 typedef unsigned short int ushort;
 
@@ -41,10 +47,11 @@ namespace std {
 
 class PortForward {
     private:
-        std::unordered_set<TableEntry> portTable;
+        std::unordered_map<TableEntry,std::priority_queue<Message> > portTable;
     public:
         friend std::istream& operator>> (std::istream &, PortForward &);
         friend std::ostream& operator<< (std::ostream &, PortForward &);
         void parse_buffer(const std::string &);
 };
 
+#endif
