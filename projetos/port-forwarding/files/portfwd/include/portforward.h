@@ -21,6 +21,7 @@ class TableEntry {
         const std::string & getIP() const { return ip; }
         const ushort & getPort() const { return port; }
         const ushort & getPID() const { return pid; }
+
 };
 
 namespace std {
@@ -44,6 +45,6 @@ class PortForward {
     public:
         friend std::istream& operator>> (std::istream &, PortForward &);
         friend std::ostream& operator<< (std::ostream &, PortForward &);
-        void parse_buffer (std::istream &);
+        void parse_buffer(const std::string &);
 };
 

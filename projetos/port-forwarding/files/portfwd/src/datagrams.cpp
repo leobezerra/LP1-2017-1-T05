@@ -76,4 +76,5 @@ std::ostream & operator<< (std::ostream & out, const Datagram & dg) {
     out << ", port: " << dg.porta << std::endl; 
  
     out << "data: " << dg.data << std::endl;
+    return out;
 }
