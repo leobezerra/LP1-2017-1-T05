@@ -139,10 +139,6 @@ int main (int argc, char * argv[]) {
         if (std::getline(in, field, ',')) ips.push_back(field);
     }
 
-    //for (ushort i = 0; i < ips.size(); i++)
-    //    std::cout << pids[i] << "," << ports[i] << "," << ips[i] << std::endl;
-    //return 1;
-
     srand(1);
     ushort buffer_size = std::atoi(argv[1]);
     for (ushort i = 0; i < buffer_size; i++) {
