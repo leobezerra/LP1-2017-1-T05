@@ -75,9 +75,8 @@ void write_options(ushort ihl) {
 }
 
 void write_hex(const std::string & str, ushort start, ushort size, ushort offset = 0) {
-    for (ushort i = start * 2; i < (start + size) * 2; i += 2) {
+    for (ushort i = start * 2; i < (start + size) * 2; i += 2)
         std::cout << str[i] << str[i+1] << ((i/2 + 1 + offset) % 8 ? " " : "\n");
-    }
 }
 
 void write_data(ushort ihl, ushort total_length) {
@@ -104,10 +103,8 @@ void write_data(ushort ihl, ushort total_length) {
     ushort total_words = remaining_data / 8;
     for (ushort i = 0; i < total_words; i++)
         write_hex(hex, i * 8 + offset, 8, offset);
-    if (remaining_data % 8) {
-        write_hex(hex, total_words * 8 + offset, remaining_data % 8, offset);
-        std::cout << std::endl;
-    }
+    if (remaining_data % total_words)
+        write_hex(hex, total_words * 8 + offset, remaining_data % total_words, offset);
 }
 
 void write_datagram(const std::string & ip, ushort port) {
@@ -125,29 +122,27 @@ void write_datagram(const std::string & ip, ushort port) {
 }
 
 int main (int argc, char * argv[]) {
-    std::cout.width(2);
-    std::cout.fill('0');
-    std::cout.setf(std::ios::hex, std::ios::basefield);
-
-    std::vector<std::string> ips;
-    std::vector<ushort> pids;
-    std::vector<ushort> ports;
+    std::cin.setf(std::ios::hex, std::ios::basefield);
 
     std::string line;
     while (std::getline(std::cin, line)) {
         std::istringstream in(line);
-        std::string field;
-        if (std::getline(in, field, ',')) pids.push_back(std::stoi(field));
-        if (std::getline(in, field, ',')) ports.push_back(std::stoi(field));
-        if (std::getline(in, field, ',')) ips.push_back(field);
-    }
+        in.setf(std::ios::hex, std::ios::basefield);
 
-    srand(1);
-    ushort buffer_size = std::atoi(argv[1]);
-    for (ushort i = 0; i < buffer_size; i++) {
-        ushort idx = rand() % ips.size();
-        write_datagram(ips[idx], ports[idx]);
-    }
+        ushort ihl_, dscp_, total_1, total_2;
+        in >> ihl_ >> dscp_ >> total_1 >> total_2;
 
+        ushort ihl = ihl_ & 0x0f;
+        ushort dscp = dscp_ >> 2;
+        ushort total = (total_1 << 8) + total_2;
+
+        std::cout << "ihl: " << ihl << ", dscp: " << dscp << ", total: " << total << std::endl;
+
+        in.ignore(16);
+        ushort ip1, ip2, ip3, ip4;
+        in >> ip1 >> ip2 >> ip3 >> ip4;
+        std::string ip = std::to_string(ip1) + "." + std::to_string(ip2) + "." + std::to_string(ip3) + "." + std::to_string(ip4);
+        std::cout << "ip: " << ip << std::endl;
+    }
     return 1;
 }
