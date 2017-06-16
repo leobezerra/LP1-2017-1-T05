@@ -22,6 +22,29 @@ std::string string_to_hex(const std::string& input)
     return output;
 }
 
+std::string hex_to_string(const std::string& input)
+{
+    static const char* const lut = "0123456789abcdef";
+    size_t len = input.length();
+    if (len & 1) throw std::invalid_argument("odd length");
+
+    std::string output;
+    output.reserve(len / 2);
+    for (size_t i = 0; i < len; i += 2)
+    {
+        char a = input[i];
+        const char* p = std::lower_bound(lut, lut + 16, a);
+        if (*p != a) throw std::invalid_argument("not a hex digit");
+
+        char b = input[i + 1];
+        const char* q = std::lower_bound(lut, lut + 16, b);
+        if (*q != b) throw std::invalid_argument("not a hex digit");
+
+        output.push_back(((p - lut) << 4) | (q - lut));
+    }
+    return output;
+}
+
 void write_random_byte(ushort size, bool end = false) {
     //std::cout << std::setw(2) << (rand() % 256);
     for (ushort i = 0; i < size; i++) 
@@ -126,6 +149,7 @@ int main (int argc, char * argv[]) {
 
     std::string line;
     while (std::getline(std::cin, line)) {
+        std::cout << "line: " << line << std::endl;
         std::istringstream in(line);
         in.setf(std::ios::hex, std::ios::basefield);
 
@@ -138,11 +162,33 @@ int main (int argc, char * argv[]) {
 
         std::cout << "ihl: " << ihl << ", dscp: " << dscp << ", total: " << total << std::endl;
 
-        in.ignore(16);
+        std::getline(std::cin, line);
+        std::getline(std::cin, line);
+        in.str(line);
+
         ushort ip1, ip2, ip3, ip4;
         in >> ip1 >> ip2 >> ip3 >> ip4;
         std::string ip = std::to_string(ip1) + "." + std::to_string(ip2) + "." + std::to_string(ip3) + "." + std::to_string(ip4);
-        std::cout << "ip: " << ip << std::endl;
+
+        for (unsigned i = 5; i < ihl; i++) std::getline(std::cin, line);
+        in.str(line);
+        in.ignore(6);
+        ushort porta_1, porta_2;
+        in >> porta_1 >> porta_2;
+        ushort porta = (porta_1 << 8) + porta_2;
+
+        std::cout << "ip: " << ip << ", porta: " << porta << std::endl;
+        
+        short total_data = total - ihl * 4;
+        std::string data_hex;
+        while (total_data > 0) { 
+            std::cin >> line;
+            data_hex += line;
+            total_data--;
+        }
+        std::string data = hex_to_string(data_hex);
+        std::cout << "data: " << data << std::endl;
+        std::getline(std::cin, line);
     }
     return 1;
 }
