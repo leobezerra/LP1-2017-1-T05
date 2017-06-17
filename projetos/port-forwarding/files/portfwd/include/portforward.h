@@ -23,6 +23,15 @@ class TableEntry {
             return ip == other.ip &&
                     port == other.port;
         }
+        bool operator<(const TableEntry &other) const { 
+            if (pid < other.pid) return true;
+            else if (pid == other.pid) {
+                if (port < other.port) return true;
+                else if (port == other.port) { return ip < other.ip; }
+                else return false;
+            }
+            else return false;
+        }
         friend std::ostream& operator<< (std::ostream &, const TableEntry &);
         const std::string & getIP() const { return ip; }
         const ushort & getPort() const { return port; }
@@ -52,6 +61,7 @@ class PortForward {
         friend std::istream& operator>> (std::istream &, PortForward &);
         friend std::ostream& operator<< (std::ostream &, PortForward &);
         void parse_buffer(const std::string &);
+        void persist(const std::string &);
 };
 
 #endif

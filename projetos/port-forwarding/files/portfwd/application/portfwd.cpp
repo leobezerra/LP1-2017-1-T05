@@ -11,10 +11,12 @@
 int main (int argc, char * argv[]) {
     PortForward portfwd;
     std::cin >> portfwd;
-    //std::cout << portfwd;
 
-    std::string fname(argv[1]);
-    portfwd.parse_buffer(fname);
-    std::cout << portfwd;
+    std::string infile(argv[1]);
+    portfwd.parse_buffer(infile);
+//    std::cout << portfwd;
+
+    std::string outfile(argv[2]);
+    portfwd.persist(outfile);
     return 1;
 }

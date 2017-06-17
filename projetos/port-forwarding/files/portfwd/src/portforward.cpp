@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <queue>
+#include <algorithm>
 
 #include "portforward.h"
 #include "datagrams.h"
@@ -51,6 +52,22 @@ void PortForward::parse_buffer(const std::string & fname) {
         Message msg(msgs[i].getMessage());
         portTable.at(key).push(msg);
     }
+}
+
+void PortForward::persist(const std::string & fname) {
+    std::ofstream out(fname);
+    std::vector<TableEntry> entries;
+    for (auto itr = portTable.begin(); itr != portTable.end(); itr++)
+        entries.push_back(itr->first);
+    std::sort(entries.begin(), entries.end());
+    for (auto itr = entries.begin(); itr != entries.end(); itr++) {
+        out << *itr << std::endl;
+        std::priority_queue<Message> queue(portTable.at(*itr));
+        while (!queue.empty()) {
+            out << queue.top() << std::endl;
+            queue.pop();
+        }
+    }        
 }
 
 std::ostream & operator<< (std::ostream & out, PortForward & pf) {
