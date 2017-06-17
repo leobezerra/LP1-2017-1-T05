@@ -11,6 +11,7 @@ class Observation {
         friend std::ostream & operator<< (std::ostream &, const Observation &);
         ushort size() const { return features.size(); }
         bool operator==(const Observation &) const;
+        bool operator<(const Observation &) const;
         const double & operator[](int idx) const { return features[idx]; }
 };
 
@@ -30,5 +31,7 @@ namespace std {
   };
 
 }
+
+typedef bool (*obsCmp)(const Observation &, const Observation &);
 
 #endif

@@ -26,3 +26,13 @@ bool Observation::operator==(const Observation & other) const {
         if (features[i] != other.features[i]) return false;
     return true; 
 }
+
+bool Observation::operator<(const Observation & other) const {
+    if (features.size() != other.features.size()) abort();
+    for (ushort i = 0; i < features.size(); i++) {
+        if (features[i] == other.features[i]) continue;
+        return features[i] < other.features[i];
+        
+    }
+    return false;
+}
