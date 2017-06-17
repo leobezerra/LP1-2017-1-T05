@@ -38,6 +38,14 @@ Sua aplicação será avaliada de forma modular:
 * Leitura do buffer de rede: 2,0 pontos.
 * Manutenção das múltiplas filas de prioridade: 4,0 pontos.
 
+## Arquivos de teste
+
+Configuração | Entrada | Verificação | Saída
+[config1.cfg](files/input/config1.cfg) | [config1.in](files/input/config1.in) | [config1.log](files/input/config1.log) | [config1.out](files/input/config1.out)
+[config2.cfg](files/input/config2.cfg) | [config2.in](files/input/config2.in) | [config2.log](files/input/config2.log) | [config2.out](files/input/config2.out)
+[config3.cfg](files/input/config3.cfg) | [config3.in](files/input/config3.in) | [config3.log](files/input/config3.log) | [config3.out](files/input/config3.out)
+
+
 ---
 
 *Anterior:* [Feed de notícias](../news-feed/) | *Próximo:* [Projetos](../)
