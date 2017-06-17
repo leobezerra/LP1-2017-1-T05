@@ -51,3 +51,20 @@ std::set<Observation, obsCmp> Set::sort(obsCmp cmp) {
     std::set<Observation, obsCmp> sequence(begin(), end(), cmp);
     return sequence;
 }
+
+std::vector<bound> Set::getBounds(void) {
+    auto itr = begin();
+    std::vector<bound> bounds;
+
+    for (unsigned i = 0; i < itr->size(); i++)
+        bounds.push_back(std::make_pair((*itr)[i], (*itr)[i]));
+
+    for (itr++; itr != end(); itr++) {
+        for (unsigned i = 0; i < bounds.size(); i++) {
+            if ((*itr)[i] < bounds[i].first) bounds[i].first = (*itr)[i];
+            if ((*itr)[i] > bounds[i].second) bounds[i].second = (*itr)[i];
+        }
+    }
+
+    return bounds;
+}

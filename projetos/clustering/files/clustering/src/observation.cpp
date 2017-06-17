@@ -36,3 +36,18 @@ bool Observation::operator<(const Observation & other) const {
     }
     return false;
 }
+
+double randomDouble(bound bounds) {
+    double a = bounds.first;
+    double b = bounds.second;
+    double random = ((double) rand()) / (double) RAND_MAX;
+    double diff = b - a;
+    double r = random * diff;
+    return a + r;
+}
+
+Observation::Observation(const std::vector<bound> & bounds) {
+    features.reserve(bounds.size());
+    for (ushort i = 0; i < bounds.size(); i++)
+        features.push_back(randomDouble(bounds[i]));
+}

@@ -4,11 +4,14 @@
 #include <vector>
 
 typedef unsigned short int ushort;
+typedef std::pair<double,double> bound;
 
 class Observation {
     private:
         std::vector<double> features;
     public:
+        Observation(void) = default;
+        Observation(const std::vector<bound> &);
         friend std::istream & operator>> (std::istream &, Observation &);
         friend std::ostream & operator<< (std::ostream &, const Observation &);
         ushort size() const { return features.size(); }
