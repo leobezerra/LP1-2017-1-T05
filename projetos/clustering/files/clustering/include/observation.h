@@ -1,6 +1,8 @@
 #ifndef __OBSERVATION_H__
 #define __OBSERVATION_H__
 
+#include <vector>
+
 typedef unsigned short int ushort;
 
 class Observation {

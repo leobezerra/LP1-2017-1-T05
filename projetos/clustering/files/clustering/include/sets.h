@@ -2,6 +2,7 @@
 #define __SETS_H__
 
 #include <set>
+#include <unordered_set>
 
 #include "observation.h"
 
