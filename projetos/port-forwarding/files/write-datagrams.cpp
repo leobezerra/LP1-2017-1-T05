@@ -59,7 +59,7 @@ void write_options(ushort ihl) {
 
 void write_hex(const std::string & str, ushort start, ushort size, ushort offset = 0) {
     for (ushort i = start; i < start + size; i++) {
-        std::cout << str[i] << ((i + 1 + offset) % 8 ? " " : "\n");
+        std::cout << std::setw(2) << (int) str[i] << ((i + 1 + offset) % 8 ? " " : "\n");
     }
 }
 
@@ -125,8 +125,10 @@ int main (int argc, char * argv[]) {
         if (std::getline(in, field, ',')) ips.push_back(field);
     }
 
-    srand(1);
+    if (argc != 3) abort();
     ushort buffer_size = std::atoi(argv[1]);
+    ushort seed = std::atoi(argv[2]);
+    srand(seed);
     for (ushort i = 0; i < buffer_size; i++) {
         ushort idx = rand() % ips.size();
         write_datagram(ips[idx], ports[idx]);
