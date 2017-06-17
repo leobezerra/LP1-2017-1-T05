@@ -29,9 +29,25 @@ class Set : private std::unordered_set<Observation> {
 
         std::set<Observation, obsCmp> sort(obsCmp cmp);
 
-        std::vector<bound> getBounds(void);
+        std::vector<bound> getBounds(void) const;
 
-        std::vector<ushort> cluster(void) {
+        Observation centroid (ushort idx, const std::vector<ushort> & clusters) const {
+            Observation new_centroid;
+            new_centroid.resize(begin()->size());
+            ushort i = 0, count = 0;
+            for (auto itr = begin(); itr != end(); itr++, i++) {
+                if (clusters[i] != idx) continue;
+                count++;
+                for (ushort j = 0; j < itr->size(); j++)
+                    new_centroid[j] += (*itr)[j];
+            }
+            // std::cout << "[" << idx << "] count: " << count << std::endl;
+            for (ushort j = 0; j < new_centroid.size(); j++)
+                new_centroid[j] /= count;
+            return new_centroid;
+        }
+
+        std::vector<ushort> cluster(void) const {
             if (empty()) abort();
             ushort k = 3;
             std::vector<Observation> container(begin(), end());
@@ -39,14 +55,41 @@ class Set : private std::unordered_set<Observation> {
             std::vector<bound> bounds = getBounds();
             std::vector<Observation> centroids;
             centroids.reserve(k);
-            std::cout << "Initial centroids:" << std::endl; 
+            // std::cout << "Initial centroids:" << std::endl; 
             for (ushort i = 0; i < k; i++) {
                 centroids.push_back(Observation(bounds));
-                std::cout << centroids[i];
+                // std::cout << centroids[i];
             }
 
-            std::vector<ushort> clusters(k);
+            std::vector<ushort> clusters(size());
+            ushort i = 0;
+            for (auto itr = begin(); itr != end(); itr++, i++)
+                clusters[i] = itr->nearest(centroids);
+
+            bool changes = true;
+            ushort iteration = 1;
+            do {
+                centroids.clear();
+                for (ushort i = 0; i < k; i++)
+                    centroids.push_back(centroid(i, clusters));
+
+                // std::cout << "[Iteration " << iteration++ << "] new centroids:" << std::endl; 
+                // for (ushort i = 0; i < k; i++) std::cout << centroids[i];
+
+                ushort i = 0, new_cluster;
+                changes = false;
+                for (auto itr = begin(); itr != end(); itr++, i++) {
+                    new_cluster = itr->nearest(centroids);
+                    if (new_cluster != clusters[i]) {
+                        clusters[i] = new_cluster;
+                        changes = true;
+                    }
+                }
+            }
+            while (changes);
+
             return clusters;
+
          }
 
 };

@@ -15,9 +15,13 @@ class Observation {
         friend std::istream & operator>> (std::istream &, Observation &);
         friend std::ostream & operator<< (std::ostream &, const Observation &);
         ushort size() const { return features.size(); }
+        void resize(ushort size) { features.resize(size); }
         bool operator==(const Observation &) const;
         bool operator<(const Observation &) const;
+        double & operator[](int idx) { return features[idx]; }
         const double & operator[](int idx) const { return features[idx]; }
+        double euclid(const Observation &) const;
+        ushort nearest(const std::vector<Observation> &) const;
 };
 
 namespace std {

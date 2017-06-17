@@ -52,7 +52,7 @@ std::set<Observation, obsCmp> Set::sort(obsCmp cmp) {
     return sequence;
 }
 
-std::vector<bound> Set::getBounds(void) {
+std::vector<bound> Set::getBounds(void) const {
     auto itr = begin();
     std::vector<bound> bounds;
 
