@@ -41,7 +41,7 @@ class Set : private std::unordered_set<Observation> {
                 for (ushort j = 0; j < itr->size(); j++)
                     new_centroid[j] += (*itr)[j];
             }
-            // std::cout << "[" << idx << "] count: " << count << std::endl;
+            std::cout << "[" << idx << "] count: " << count << std::endl;
             for (ushort j = 0; j < new_centroid.size(); j++)
                 new_centroid[j] /= count;
             return new_centroid;

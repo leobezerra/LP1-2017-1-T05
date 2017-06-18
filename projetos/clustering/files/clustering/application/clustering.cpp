@@ -10,7 +10,7 @@ bool cmp (const Observation & lhs, const Observation & rhs) {
 }
 
 int main(int argc, char * argv[]) {
-	srand(1);
+	srand(std::atoi(argv[1]));
     std::cout.precision(5);
     Set dataset;
     std::cin >> dataset;
