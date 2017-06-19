@@ -21,8 +21,11 @@ std::istream& operator>> (std::istream & stin, PortForward & pf) {
         std::istringstream in(line);
         std::string field;
         if (std::getline(in, field, ',')) pid = std::stoi(field);
+        else abort();
         if (std::getline(in, field, ',')) port = std::stoi(field);
+        else abort();
         if (std::getline(in, field, ',')) ip = field;
+        else abort();
         TableEntry entry(ip, port, pid);
         pf.portTable.insert(std::make_pair(entry, std::priority_queue<Message>()));
     }
@@ -38,7 +41,6 @@ std::ostream & operator<< (std::ostream & out, const TableEntry & entry) {
 void PortForward::parse_buffer(const std::string & fname) {
     std::ifstream in(fname);
     std::vector<Datagram> msgs;
-    ushort i = 0;
     do {
         Datagram msg;
         in >> msg;

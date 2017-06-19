@@ -31,9 +31,10 @@ namespace std {
   {
     std::size_t operator()(const Observation & obs) const
     {
+        if (!obs.size()) abort();
         using std::hash;
-        std::size_t h;
-        for (ushort i = 0; i < obs.size(); i++)
+        std::size_t h = hash<double>()(obs[0]);
+        for (ushort i = 1; i < obs.size(); i++)
             h ^= hash<double>()(obs[i]); 
         return h;
     }

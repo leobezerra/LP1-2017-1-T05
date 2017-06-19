@@ -93,11 +93,8 @@ std::vector<ushort> Set::cluster(void) const {
     std::vector<bound> bounds = getBounds();
     std::vector<Observation> centroids;
     centroids.reserve(k);
-    // std::cout << "Initial centroids:" << std::endl; 
-    for (ushort i = 0; i < k; i++) {
+    for (ushort i = 0; i < k; i++)
         centroids.push_back(Observation(bounds));
-        // std::cout << centroids[i];
-    }
 
     std::vector<ushort> clusters(size());
     ushort i = 0;
@@ -105,14 +102,10 @@ std::vector<ushort> Set::cluster(void) const {
         clusters[i] = itr->nearest(centroids);
 
     bool changes = true;
-    ushort iteration = 1;
     do {
         centroids.clear();
         for (ushort i = 0; i < k; i++)
             centroids.push_back(centroid(i, clusters));
-
-        // std::cout << "[Iteration " << iteration++ << "] new centroids:" << std::endl; 
-        // for (ushort i = 0; i < k; i++) std::cout << centroids[i];
 
         ushort i = 0, new_cluster;
         changes = false;
