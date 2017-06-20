@@ -25,7 +25,7 @@ class NewsFeed {
 
 std::istream & operator>> (std::istream & in, NewsFeed & feed) {
 	std::string tmp;
-	std::getline(std::cin, tmp);	
+	std::getline(in, tmp);	
 	std::istringstream line(tmp);
 
 	Json::Value cfg;
@@ -34,7 +34,7 @@ std::istream & operator>> (std::istream & in, NewsFeed & feed) {
 	feed.rank = cfg.get("rank", "top-news").asString();
 	feed.refresh_rate = cfg.get("refresh_rate", "1").asInt();
 
-	while (in.eof()) {
+	while (!in.eof()) {
 		Publisher pbs;
 		in >> pbs;
 		if (in.eof()) break;
@@ -46,6 +46,8 @@ std::istream & operator>> (std::istream & in, NewsFeed & feed) {
 
 std::ostream & operator<< (std::ostream & out, const NewsFeed & feed) {
 	out << "{\"rank\": \"" << feed.rank << "\", \"refresh_rate\": " << feed.refresh_rate << "}" << std::endl;
+	for (auto itr = feed.publishers.begin(); itr != feed.publishers.end(); itr++)
+		out << *itr;
 	return out;
 }
 
@@ -57,11 +59,13 @@ int main (int argc, char * argv[]) {
 	std::string fname(argv[1]);
 	std::ifstream buffer(fname);
 
+	//std::cout << feed;
+
 	while (!buffer.eof()) {
 		News news;
 		buffer >> news;
 		if (buffer.eof()) break;
-		std::cout << news;
+		//std::cout << news;
 	}
 
 	return 1;
