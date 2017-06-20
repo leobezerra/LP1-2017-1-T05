@@ -34,6 +34,13 @@ std::istream & operator>> (std::istream & in, NewsFeed & feed) {
 	feed.rank = cfg.get("rank", "top-news").asString();
 	feed.refresh_rate = cfg.get("refresh_rate", "1").asInt();
 
+	while (in.eof()) {
+		Publisher pbs;
+		in >> pbs;
+		if (in.eof()) break;
+		feed.publishers.insert(pbs); 
+	} 
+
 	return in;
 }
 
@@ -45,12 +52,6 @@ std::ostream & operator<< (std::ostream & out, const NewsFeed & feed) {
 int main (int argc, char * argv[]) {
 	NewsFeed feed;
 	std::cin >> feed;
-
-	while (!std::cin.eof()) {
-		Publisher pbs;
-		std::cin >> pbs;
-		if (std::cin.eof()) break; 
-	} 
 
 	if (argc < 2) abort();
 	std::string fname(argv[1]);
