@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-#include <unordered_map>
+#include <unordered_set>
 
 #include "json/json-forwards.h"
 #include "json/json.h"
@@ -12,7 +12,18 @@
 #include "publisher.h"
 #include "news.h"
 
-int main (int argc, char * argv[]) {
+class NewsFeed {
+	private:
+		std::string rank;
+		ushort refresh_rate;
+		std::unordered_set<Publisher> publishers;
+//		std::unordered_set<News> news;
+	public:
+		friend std::istream & operator>> (std::istream &, NewsFeed &);
+		friend std::ostream & operator<< (std::ostream &, const NewsFeed &);
+};
+
+std::istream & operator>> (std::istream & in, NewsFeed & feed) {
 	std::string tmp;
 	std::getline(std::cin, tmp);	
 	std::istringstream line(tmp);
@@ -20,10 +31,20 @@ int main (int argc, char * argv[]) {
 	Json::Value cfg;
 	line >> cfg;
 
-	std::string rank = cfg.get("rank", "top-news").asString();
-	ushort refresh_rate = cfg.get("refresh_rate", "1").asInt();
+	feed.rank = cfg.get("rank", "top-news").asString();
+	feed.refresh_rate = cfg.get("refresh_rate", "1").asInt();
 
-	std::cout << "{\"rank\": \"" << rank << "\", \"refresh_rate\": " << refresh_rate << "}" << std::endl;
+	return in;
+}
+
+std::ostream & operator<< (std::ostream & out, const NewsFeed & feed) {
+	out << "{\"rank\": \"" << feed.rank << "\", \"refresh_rate\": " << feed.refresh_rate << "}" << std::endl;
+	return out;
+}
+
+int main (int argc, char * argv[]) {
+	NewsFeed feed;
+	std::cin >> feed;
 
 	while (!std::cin.eof()) {
 		Publisher pbs;
