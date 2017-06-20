@@ -1,4 +1,4 @@
-{"rank": "recent-news", "refresh-rate": 10}
+{"rank": "recent-news", "refresh_rate": 10}
 {"publisher_id": 1, "interaction_frequency": {"yearly": 2764, "monthly": 776, "5day": 21}, "last_interaction": "2017-01-20T08:22:32.583325"}
 {"publisher_id": 2, "interaction_frequency": {"yearly": 1832, "monthly": 468, "5day": 21}, "last_interaction": "2017-05-16T10:28:41.583436"}
 {"publisher_id": 3, "interaction_frequency": {"yearly": 1009, "monthly": 274, "5day": 89}, "last_interaction": "2016-11-14T03:16:08.583535"}
