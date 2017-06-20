@@ -15,7 +15,7 @@ std::istream & operator>> (std::istream & in, News & news) {
 
 	Json::Value root;
 	line >> root;
-	news.publisher_id = root.get("publisher_id", "0").asInt();
+	news.publisher_id = root.get("publisher_id", "0").asUInt();
 
 	std::string dt_str = root.get("timestamp","").asString();
 	std::istringstream dt_stream(dt_str);

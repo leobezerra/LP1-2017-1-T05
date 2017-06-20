@@ -14,7 +14,7 @@ std::istream & operator>> (std::istream & in, Publisher & pbs) {
 	Json::Value root;
 	line >> root;
 
-	pbs.publisher_id = root.get("publisher_id", "0").asInt();
+	pbs.publisher_id = root.get("publisher_id", "0").asUInt();
 	if (pbs.publisher_id == 0) abort();
 	std::string str_li = root.get("last_interaction", "").asString();
 	if (str_li == "") abort();
@@ -22,9 +22,9 @@ std::istream & operator>> (std::istream & in, Publisher & pbs) {
 	std::istringstream date(str_li);
 	date >> pbs.last_interaction;
 
-	pbs.weekly = root["interaction_frequency"].get("5day", 0).asInt();
-	pbs.monthly = root["interaction_frequency"].get("monthly", 0).asInt();
-	pbs.yearly = root["interaction_frequency"].get("yearly", 0).asInt();
+	pbs.weekly = root["interaction_frequency"].get("5day", 0).asUInt();
+	pbs.monthly = root["interaction_frequency"].get("monthly", 0).asUInt();
+	pbs.yearly = root["interaction_frequency"].get("yearly", 0).asUInt();
 
 	return in;
 }
