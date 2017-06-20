@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <fstream>
 #include <string>
 #include <unordered_map>
 
@@ -9,6 +10,7 @@
 
 #include "datetime.h"
 #include "publisher.h"
+#include "news.h"
 
 int main (int argc, char * argv[]) {
 	std::string tmp;
@@ -27,8 +29,18 @@ int main (int argc, char * argv[]) {
 		Publisher pbs;
 		std::cin >> pbs;
 		if (std::cin.eof()) break; 
-		std::cout << pbs;
 	} 
+
+	if (argc < 2) abort();
+	std::string fname(argv[1]);
+	std::ifstream buffer(fname);
+
+	while (!buffer.eof()) {
+		News news;
+		buffer >> news;
+		if (buffer.eof()) break;
+		std::cout << news;
+	}
 
 	return 1;
 }
