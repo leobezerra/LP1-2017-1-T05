@@ -51,3 +51,14 @@ std::ostream & operator<< (std::ostream & out, const Datetime & tstamp) {
 		//<< " (" << tstamp.elapsed << ")";
 	return out;
 }
+
+bool Datetime::operator==(const Datetime &other) const {
+	return years == other.years && months == other.months
+		&& days == other.days && hours == other.hours
+		&& minutes == other.minutes && seconds == other.seconds
+		&& micros == other.micros && elapsed == other.elapsed;	
+}
+
+bool Datetime::operator<(const Datetime & other) const {
+    return elapsed < other.elapsed;
+}

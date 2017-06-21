@@ -58,9 +58,13 @@ void NewsFeed::sort_recent(void) {
 
 void NewsFeed::sort_active(void) {
 	std::set<Publisher> active(publishers.begin(), publishers.end());
-	std::unordered_multiset<News,publisherHash> group(active.begin(), active.end());
-	for (auto itr = group.begin(); itr != group.end(); itr++)
-		std::cout << *itr;	
+//	std::unordered_multiset<News,publisherHash> group(news.begin(), news.end());
+	// std::multimap<Publisher,News,cmp> group;
+	// for (auto itr = news.begin(); itr != news.end(); itr++)
+	// 	group.insert();
+	// (news.begin(), news.end(), activeCmp);
+//	for (auto itr = group.begin(); itr != group.end(); itr++)
+//		std::cout << *itr;	
 	// active_news = active;
 }
 
@@ -70,5 +74,8 @@ void NewsFeed::render(void) {
 		ushort count = 0;
 		for (auto itr = recent_news.begin(); itr != recent_news.end() && count < 10; itr++, count++)
 			std::cout << *itr;
+	}
+	if (rank == "recent-active") {
+		sort_active();
 	}
 }

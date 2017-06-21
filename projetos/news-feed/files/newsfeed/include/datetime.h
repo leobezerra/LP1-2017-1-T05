@@ -10,12 +10,8 @@ class Datetime {
 		long long unsigned int elapsed;
 	public:
 		long long unsigned int getElapsed(void) const { return elapsed; }
-		bool operator==(const Datetime &other) const {
-			return years == other.years && months == other.months
-				&& days == other.days && hours == other.hours
-				&& minutes == other.minutes && seconds == other.seconds
-				&& micros == other.micros && elapsed == other.elapsed;	
-		}
+		bool operator==(const Datetime &other) const;
+		bool operator<(const Datetime & other) const;
 		friend std::istream & operator>> (std::istream &, Datetime &);
 		friend std::ostream & operator<< (std::ostream &, const Datetime &);		
 };

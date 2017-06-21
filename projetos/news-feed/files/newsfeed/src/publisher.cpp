@@ -44,3 +44,7 @@ bool Publisher::operator==(const Publisher &other) const {
             && yearly == other.yearly
             && last_interaction == last_interaction;
 }
+
+bool Publisher::operator<(const Publisher &other) const {
+	return publisher_id == other.publisher_id;
+}

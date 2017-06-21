@@ -15,7 +15,9 @@ class Publisher {
 		friend std::istream & operator>> (std::istream &, Publisher &);
 		friend std::ostream & operator<< (std::ostream &, const Publisher &);
 		bool operator==(const Publisher &other) const;
-		ushort getID(void) const { return publisher_id; }
+    bool operator<(const Publisher &other) const;
+    ushort getID(void) const { return publisher_id; }
+    const Datetime & getLastInteraction(void) const { return last_interaction; }
 };
 
 namespace std {
@@ -30,6 +32,11 @@ namespace std {
     }
   };
 
+}
+
+typedef bool (*cmp)(const Publisher &, const Publisher &); 
+bool activeCmp (const Publisher & lhs, const Publisher & rhs) {
+    return lhs.getLastInteraction() < rhs.getLastInteraction();
 }
 
 #endif

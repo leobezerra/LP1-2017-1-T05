@@ -40,5 +40,5 @@ bool News::operator==(const News &other) const {
 }
 
 bool News::operator<(const News & other) const {
-    return tstamp.getElapsed() > other.tstamp.getElapsed();
+    return tstamp < other.tstamp;
 }
