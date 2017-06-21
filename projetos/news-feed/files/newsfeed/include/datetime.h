@@ -9,6 +9,7 @@ class Datetime {
 		unsigned micros;
 		long long unsigned int elapsed;
 	public:
+		long long unsigned int getElapsed(void) const { return elapsed; }
 		bool operator==(const Datetime &other) const {
 			return years == other.years && months == other.months
 				&& days == other.days && hours == other.hours
@@ -18,5 +19,19 @@ class Datetime {
 		friend std::istream & operator>> (std::istream &, Datetime &);
 		friend std::ostream & operator<< (std::ostream &, const Datetime &);		
 };
+
+namespace std {
+
+  template <>
+  struct hash<Datetime>
+  {
+    std::size_t operator()(const Datetime& timestamp) const
+    {
+      using std::hash;
+      return hash<long long unsigned int>()(timestamp.getElapsed());
+    }
+  };
+
+}
 
 #endif

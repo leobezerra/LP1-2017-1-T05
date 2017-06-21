@@ -37,3 +37,10 @@ std::ostream & operator<< (std::ostream & out, const Publisher & pbs) {
 
 	return out;
 }
+
+bool Publisher::operator==(const Publisher &other) const {
+	return publisher_id == other.publisher_id 
+		&& weekly == other.weekly && monthly == other.monthly
+            && yearly == other.yearly
+            && last_interaction == last_interaction;
+}

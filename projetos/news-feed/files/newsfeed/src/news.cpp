@@ -32,3 +32,13 @@ std::ostream & operator<< (std::ostream & out, const News & news) {
 
 	return out;
 }
+
+bool News::operator==(const News &other) const {
+	return publisher_id == other.publisher_id 
+		&& tstamp == other.tstamp
+            && msg == other.msg;
+}
+
+bool News::operator<(const News & other) const {
+    return tstamp.getElapsed() > other.tstamp.getElapsed();
+}

@@ -1,27 +1,14 @@
 #include <iostream>
-#include <iomanip>
 #include <sstream>
 #include <fstream>
 #include <string>
-#include <unordered_set>
 
 #include "json/json-forwards.h"
 #include "json/json.h"
 
-#include "datetime.h"
 #include "publisher.h"
 #include "news.h"
-
-class NewsFeed {
-	private:
-		std::string rank;
-		ushort refresh_rate;
-		std::unordered_set<Publisher> publishers;
-//		std::unordered_set<News> news;
-	public:
-		friend std::istream & operator>> (std::istream &, NewsFeed &);
-		friend std::ostream & operator<< (std::ostream &, const NewsFeed &);
-};
+#include "newsfeed.h"
 
 std::istream & operator>> (std::istream & in, NewsFeed & feed) {
 	std::string tmp;
@@ -48,25 +35,40 @@ std::ostream & operator<< (std::ostream & out, const NewsFeed & feed) {
 	out << "{\"rank\": \"" << feed.rank << "\", \"refresh_rate\": " << feed.refresh_rate << "}" << std::endl;
 	for (auto itr = feed.publishers.begin(); itr != feed.publishers.end(); itr++)
 		out << *itr;
+	for (auto itr = feed.news.begin(); itr != feed.news.end(); itr++)
+		out << *itr;
 	return out;
 }
 
-int main (int argc, char * argv[]) {
-	NewsFeed feed;
-	std::cin >> feed;
-
-	if (argc < 2) abort();
-	std::string fname(argv[1]);
+void NewsFeed::read_buffer(const std::string & fname) {
 	std::ifstream buffer(fname);
-
-	//std::cout << feed;
-
 	while (!buffer.eof()) {
-		News news;
-		buffer >> news;
+		News piece;
+		buffer >> piece;
 		if (buffer.eof()) break;
-		//std::cout << news;
+		news.insert(piece);
 	}
 
-	return 1;
+}
+
+void NewsFeed::sort_recent(void) {
+	std::set<News> recent(news.begin(), news.end());
+	recent_news = recent;
+} 
+
+void NewsFeed::sort_active(void) {
+	std::set<Publisher> active(publishers.begin(), publishers.end());
+	std::unordered_multiset<News,publisherHash> group(active.begin(), active.end());
+	for (auto itr = group.begin(); itr != group.end(); itr++)
+		std::cout << *itr;	
+	// active_news = active;
+}
+
+void NewsFeed::render(void) {
+	if (rank == "recent-news") {
+		sort_recent();
+		ushort count = 0;
+		for (auto itr = recent_news.begin(); itr != recent_news.end() && count < 10; itr++, count++)
+			std::cout << *itr;
+	}
 }

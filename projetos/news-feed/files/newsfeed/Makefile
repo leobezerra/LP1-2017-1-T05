@@ -9,8 +9,8 @@ CC = g++
 CFLAGS = -O3 -Wall -std=c++11 -pedantic -I $(INCLUDEDIR)
 LDFLAGS =
 
-BIN = ${BINDIR}/newsfeed
-APP = ${APPDIR}/newsfeed.cpp
+BIN = ${BINDIR}/feed
+APP = ${APPDIR}/feed.cpp
 
 SRC = $(wildcard $(SRCDIR)/*.cpp)
 OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRC))

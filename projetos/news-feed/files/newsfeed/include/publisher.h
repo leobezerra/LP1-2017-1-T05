@@ -12,15 +12,10 @@ class Publisher {
 		ushort publisher_id, weekly, monthly, yearly;
 		Datetime last_interaction;
 	public:
-		ushort getID(void) const { return publisher_id; }
-		bool operator==(const Publisher &other) const {
-			return publisher_id == other.publisher_id 
-				&& weekly == other.weekly && monthly == other.monthly
-   	            && yearly == other.yearly
-   	            && last_interaction == last_interaction;
-		}
 		friend std::istream & operator>> (std::istream &, Publisher &);
 		friend std::ostream & operator<< (std::ostream &, const Publisher &);
+		bool operator==(const Publisher &other) const;
+		ushort getID(void) const { return publisher_id; }
 };
 
 namespace std {
