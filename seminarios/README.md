@@ -19,11 +19,12 @@ Jeckson | *CMake*
 João Santos | *CMake*
 Joelson | *Gzip*
 José Augusto |*Gzip*
+Luciano | *Boost*
 Renan | *Google Test*
 
 ## Informações práticas
 
-* Data: Sábado, 01/07/2017
-* Horário: M34
-* Sala: A306
+* **Data:** Sábado, 01/07/2017
+* **Horário:** M34
+* **Sala:** A306
 
