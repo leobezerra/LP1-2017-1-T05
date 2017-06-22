@@ -15,7 +15,7 @@ std::istream & operator>> (std::istream & in, Datetime & tstamp) {
 
 	std::getline(in, tmp, '-');
 	tstamp.months = std::stoi(tmp);
-	tstamp.elapsed += tstamp.months * 259200 * 10e6;
+	tstamp.elapsed += tstamp.months * 2592000 * 10e6;
 
 	std::getline(in, tmp, 'T');
 	tstamp.days = std::stoi(tmp);
@@ -47,8 +47,8 @@ std::ostream & operator<< (std::ostream & out, const Datetime & tstamp) {
 		<< "T" << std::setw(2) << std::setfill('0') << tstamp.hours 
 		<< ":" << std::setw(2) << std::setfill('0') << tstamp.minutes 
 		<< ":" << std::setw(2) << std::setfill('0') << tstamp.seconds 
-		<< "." << std::setw(6) << std::setfill('0') << tstamp.micros; 
-		//<< " (" << tstamp.elapsed << ")";
+		<< "." << std::setw(6) << std::setfill('0') << tstamp.micros;
+//		<< " (" << tstamp.elapsed << ")";
 	return out;
 }
 
@@ -60,5 +60,5 @@ bool Datetime::operator==(const Datetime &other) const {
 }
 
 bool Datetime::operator<(const Datetime & other) const {
-    return elapsed < other.elapsed;
+    return elapsed > other.elapsed;
 }

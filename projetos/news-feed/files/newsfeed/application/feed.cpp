@@ -5,9 +5,6 @@
 #include <string>
 #include <unordered_set>
 
-#include "json/json-forwards.h"
-#include "json/json.h"
-
 #include "newsfeed.h"
 
 int main (int argc, char * argv[]) {

@@ -26,6 +26,8 @@ std::istream & operator>> (std::istream & in, Publisher & pbs) {
 	pbs.monthly = root["interaction_frequency"].get("monthly", 0).asUInt();
 	pbs.yearly = root["interaction_frequency"].get("yearly", 0).asUInt();
 
+	pbs.relevance = (6 * pbs.weekly + 4 * pbs.monthly + 2 * pbs.yearly) / 12;
+
 	return in;
 }
 
@@ -33,7 +35,9 @@ std::ostream & operator<< (std::ostream & out, const Publisher & pbs) {
 	out << "{\"publisher_id\": " << pbs.publisher_id << ", \"interaction_frequency\": "
 		"{\"yearly\": " << pbs.yearly << ", \"monthly\": " << pbs.monthly << 
 		", \"5day\": " << pbs.weekly << "}" 
-		<< ", \"last_interaction\": \"" << pbs.last_interaction << "\"}" <<  std::endl;
+		<< ", \"last_interaction\": \"" << pbs.last_interaction << "\""
+		<< ", \"relevance\": " << pbs.relevance
+		<< "}" <<  std::endl;
 
 	return out;
 }
@@ -46,5 +50,5 @@ bool Publisher::operator==(const Publisher &other) const {
 }
 
 bool Publisher::operator<(const Publisher &other) const {
-	return publisher_id == other.publisher_id;
+	return publisher_id < other.publisher_id;
 }
