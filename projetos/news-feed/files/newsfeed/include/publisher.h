@@ -48,14 +48,4 @@ struct topCmp {
 	}
 };
 
-// class publisherHash
-// {
-// 	public:
-// 		std::size_t operator()(const Publisher & pbs) const
-//     	{
-//     		using std::hash;
-//       		return hash<ushort>()(pbs.getID());
-//     	}
-// };
-
 #endif

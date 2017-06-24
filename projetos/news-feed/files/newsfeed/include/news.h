@@ -34,14 +34,4 @@ namespace std {
 
 }
 
-// class publisherHash
-// {
-// 	public:
-// 		std::size_t operator()(const News& news) const
-//     	{
-//     		using std::hash;
-//       		return hash<ushort>()(news.getPublisherID());
-//     	}
-// };
-
 #endif
