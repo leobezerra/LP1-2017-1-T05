@@ -7,87 +7,10 @@
 
 typedef unsigned short int ushort;
 
-class ColumnTraits {
-	private:
-		std::string name, type;
-	public:
-		ColumnTraits(std::string & name_) : name(name_), type("") {}
-		friend std::ostream & operator<< (std::ostream &, const ColumnTraits &);
-		void setType(std::string && value) { type = value; }
-		const std::string & getName(void) const { return name; }
-		const std::string & getType(void) const { return type; }
-};
-
-std::ostream & operator<< (std::ostream & out, const ColumnTraits & col) {
-	out << col.name;
-	return out;
-}
-
-class Column {
-	public:
-		explicit Column (void) = default;
-		Column(const Column & other) = delete;
-		Column& operator=(const Column&) = delete;
-		friend std::ostream & operator<< (std::ostream &, const Column &);
-		virtual std::ostream & print(std::ostream &) const = 0;
-		virtual std::ostream & print(std::ostream &, ushort) const = 0;
-		virtual void push_back(std::string & value) = 0;
-		virtual ushort size(void) = 0;
-};
-
-std::ostream & operator<< (std::ostream & out, const Column & col) {
-	return col.print(out);
-}
-
-class StringColumn : public Column {
-	private:
-		std::vector<std::string> data;
-	public:
-		StringColumn(std::string & value) { 
-			if (value.size() == 2)
-				data.push_back("");
-			else
-				data.push_back(value.substr(1,value.size()-2)); 
-		}
-		std::ostream & print(std::ostream & out) const {
-			for (ushort i = 0; i < data.size(); i++)
-				out << "\"" << data[i] << "\"";
-			return out;
-		}
-		std::ostream & print(std::ostream & out, ushort idx) const {
-			out << "\"" << data[idx] << "\"";
-			return out;
-		}
-		void push_back(std::string & value) { 
-			if (value.size() == 2)
-				data.push_back("");
-			else
-				data.push_back(value.substr(1,value.size()-2)); 
-		}
-		ushort size(void) { return data.size(); }
-};
-
-class NumColumn : public Column {
-	private:
-		std::vector<float> data;
-	public:
-		NumColumn(const std::string & value) { 
-			data.push_back(std::stof(value)); 
-		}
-		std::ostream & print(std::ostream & out) const {
-			for (ushort i = 0; i < data.size(); i++)
-				out << data[i];
-			return out;
-		}
-		std::ostream & print(std::ostream & out, ushort idx) const {
-			out << data[idx];
-			return out;
-		}
-		void push_back(std::string & value) { 
-			data.push_back(std::stof(value)); 
-		}
-		ushort size(void) { return data.size(); }
-};
+#include "column.h"
+#include "stringColumn.h"
+#include "numColumn.h"
+#include "columnTraits.h"
 
 int main (int argc, char * argv[]) {
 	std::string buffer;
@@ -151,5 +74,4 @@ int main (int argc, char * argv[]) {
 		}
 		std::cout << std::endl;
 	}
-	std::cout << std::endl;
 }
