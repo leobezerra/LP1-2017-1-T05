@@ -7,6 +7,10 @@ Confira a descrição dos [projetos de implementação](projetos/).
 
 ---
 
+Confira a descrição dos [seminários](seminarios/).
+
+---
+
 Abaixo, os materiais de consulta para cada tópico de aula.
 
 ---
