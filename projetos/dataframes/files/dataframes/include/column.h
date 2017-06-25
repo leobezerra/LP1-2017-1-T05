@@ -14,7 +14,7 @@ class Column {
 		virtual std::ostream & print(std::ostream &) const = 0;
 		virtual std::ostream & print(std::ostream &, ushort) const = 0;
 		virtual void push_back(std::string & value) = 0;
-		virtual ushort size(void) = 0;
+		virtual ushort size(void) const = 0;
 };
 
 #endif

@@ -15,7 +15,7 @@ class NumColumn : public Column {
 		std::ostream & print(std::ostream &) const;
 		std::ostream & print(std::ostream &, ushort) const;
 		void push_back(std::string &);
-		ushort size(void) { return data.size(); }
+		ushort size(void) const { return data.size(); }
 };
 
 #endif
