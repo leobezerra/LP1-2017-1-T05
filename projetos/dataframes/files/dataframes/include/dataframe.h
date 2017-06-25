@@ -23,6 +23,8 @@ class DataFrame {
 		friend std::istream & operator>> (std::istream &, DataFrame &);
 		friend std::ostream & operator<< (std::ostream &, const DataFrame &);
 		const std::string & getColName(ushort idx) const { return header[idx].getName(); }
+		void print(std::ostream &, char sep='\t') const;
+		void persist(const std::string &) const;
 };
 
 #endif

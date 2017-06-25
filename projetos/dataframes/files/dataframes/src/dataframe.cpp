@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -16,12 +17,6 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 	std::istringstream header_buffer(buffer);
 	while (std::getline(header_buffer,field,';')) df.header.push_back(ColumnTraits(field));
 	df.ncols = df.header.size();
-
-	for (ushort i = 0; i < df.header.size(); i++) {
-		std::cout << df.header[i];
-		if (i+1 != df.ncols) std::cout << ';';
-	}
-	std::cout << std::endl;
 
 	std::getline(in, buffer);
 	std::istringstream line(buffer);
@@ -63,12 +58,26 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 }
 
 std::ostream & operator<< (std::ostream & out, const DataFrame & df) {
-	for (ushort i = 0; i < df.nrows; i++) {
-		for (ushort j = 0; j < df.ncols; j++) {
-			df.cols.at(df.getColName(j))->print(std::cout, i);
-			if (j+1 != df.ncols) out << ";";
+	df.print(out);
+	return out;
+}
+
+void DataFrame::print(std::ostream & out, char sep) const {
+	for (ushort i = 0; i < header.size(); i++) {
+		out << header[i];
+		if (i+1 != ncols) out << sep;
+	}
+	out << std::endl;
+	for (ushort i = 0; i < nrows; i++) {
+		for (ushort j = 0; j < ncols; j++) {
+			cols.at(getColName(j))->print(out, i);
+			if (j+1 != ncols) out << sep;
 		}
 		out << std::endl;
 	}
-	return out;
+}
+
+void DataFrame::persist(const std::string & fname) const {
+	std::ofstream out(fname);
+	print(out,';');
 }
