@@ -11,7 +11,10 @@ class NumColumn : public Column {
 	private:
 		std::vector<float> data;
 	public:
-		NumColumn(ColumnTraits && traits) : Column(std::forward<ColumnTraits>(traits)) { }
+		NumColumn(const std::string & name, std::string && type) 
+			: Column(name,std::forward<std::string>(type)) { }
+		NumColumn(std::string && name, std::string && type) 
+			: Column(std::forward<std::string>(name),std::forward<std::string>(type)) { }
 		std::ostream & print(std::ostream &) const;
 		std::ostream & print(std::ostream &, ushort) const;
 		void push_back(std::string &&);

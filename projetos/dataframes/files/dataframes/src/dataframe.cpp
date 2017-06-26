@@ -31,9 +31,9 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 		}
 		std::unique_ptr<Column> col;
 		if (is_string) 
-			col = std::unique_ptr<Column>(new StringColumn(ColumnTraits(df.header[i],"string")));
+			col = std::unique_ptr<Column>(new StringColumn(df.header[i],"string"));
 		else
-			col = std::unique_ptr<Column>(new NumColumn(ColumnTraits(df.header[i],"numeric")));
+			col = std::unique_ptr<Column>(new NumColumn(df.header[i],"numeric"));
 		col->push_back(std::move(field));
 		df.cols.insert(std::make_pair(df.header[i],std::move(col)));
 	}

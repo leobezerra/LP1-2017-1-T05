@@ -11,7 +11,10 @@ class StringColumn : public Column {
 	private:
 		std::vector<std::string> data;
 	public:
-		StringColumn(ColumnTraits && traits) : Column(std::forward<ColumnTraits>(traits)) { }
+		StringColumn(const std::string & name, std::string && type) 
+			: Column(name,std::forward<std::string>(type)) { }
+		StringColumn(std::string && name, std::string && type) 
+			: Column(std::forward<std::string>(name),std::forward<std::string>(type)) {}
 		std::ostream & print(std::ostream &) const;
 		std::ostream & print(std::ostream &, ushort) const;
 		void push_back(std::string && value);

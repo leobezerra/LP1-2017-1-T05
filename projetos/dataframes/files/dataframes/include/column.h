@@ -7,15 +7,14 @@
 #include <memory>
 #include <utility>
 
-#include "columnTraits.h"
-
 class Column {
 	private:
-		ColumnTraits traits;
+		std::string name, type;
 	public:
-		//Column(std::string && name, std::string && type) : traits(name, type) {}
-		Column(ColumnTraits && _traits) : traits(std::forward<ColumnTraits>(_traits)) {}
-		const std::string & getType(void) { return traits.getType(); }
+		Column(const std::string & _name, std::string && _type) : name(_name), type(_type) {}
+		Column(std::string && _name, std::string && _type) : name(_name), type(_type) {}
+		const std::string & getName(void) { return name; }
+		const std::string & getType(void) { return type; }
 		friend std::ostream & operator<< (std::ostream &, const Column &);
 		virtual std::ostream & print(std::ostream &) const = 0;
 		virtual std::ostream & print(std::ostream &, ushort) const = 0;

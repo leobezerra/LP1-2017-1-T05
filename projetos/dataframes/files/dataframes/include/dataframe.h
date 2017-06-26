@@ -12,7 +12,6 @@ typedef unsigned short int ushort;
 #include "column.h"
 #include "stringColumn.h"
 #include "numColumn.h"
-#include "columnTraits.h"
 
 class DataFrame {
 	private:

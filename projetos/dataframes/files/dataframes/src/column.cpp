@@ -20,9 +20,9 @@ std::unique_ptr<Column> make_column(const std::string & fname) {
  	bool is_string = (in.peek() == '\"');
 	std::unique_ptr<Column> col;
 	if (is_string)
-		col = std::unique_ptr<Column>(new StringColumn(ColumnTraits(std::move(colname),"string")));
+		col = std::unique_ptr<Column>(new StringColumn(std::move(colname),"string"));
 	else
-		col = std::unique_ptr<Column>(new NumColumn(ColumnTraits(std::move(colname),"numeric")));
+		col = std::unique_ptr<Column>(new NumColumn(std::move(colname),"numeric"));
 	std::cout << "Jazz! " << col->getType() << std::endl;
 	col->read_column(in);
 	return col;
