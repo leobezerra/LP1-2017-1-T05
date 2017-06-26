@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 
 typedef unsigned short int ushort;
@@ -7,12 +8,8 @@ typedef unsigned short int ushort;
 
 int main (int argc, char * argv[]) {
 	DataFrame df;
-	std::cin >> df;
-
-	if (argc == 2) {
-		std::string fname(argv[1]);
-		df.persist(fname);
-	}
-	else
-		std::cout << df;
+	std::ifstream in("../input/turmas20171.csv");
+	in >> df;
+	std::string out("persist.csv");
+	df.persist(out);
 }

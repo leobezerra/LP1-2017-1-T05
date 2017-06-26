@@ -16,13 +16,13 @@ typedef unsigned short int ushort;
 
 class DataFrame {
 	private:
-		std::vector<ColumnTraits> header;
+		std::vector<std::string> header;
 		std::unordered_map<std::string,std::unique_ptr<Column>> cols;
 		ushort nrows, ncols;
 	public:
 		friend std::istream & operator>> (std::istream &, DataFrame &);
 		friend std::ostream & operator<< (std::ostream &, const DataFrame &);
-		const std::string & getColName(ushort idx) const { return header[idx].getName(); }
+		const std::string & getColName(ushort idx) const { return header[idx]; }
 		void print(std::ostream &, char sep='\t') const;
 		void persist(const std::string &) const;
 };

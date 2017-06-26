@@ -15,14 +15,13 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 
 	std::string field;
 	std::istringstream header_buffer(buffer);
-	while (std::getline(header_buffer,field,';')) df.header.push_back(ColumnTraits(field));
+	while (std::getline(header_buffer,field,';')) df.header.push_back(std::move(field));
 	df.ncols = df.header.size();
 
 	std::getline(in, buffer);
 	std::istringstream line(buffer);
 	for (ushort i = 0; std::getline(line,field,';'); i++) {
 		bool is_string = field[0] == '\"';
-		df.header[i].setType(is_string ? "string" : "numeric");
 		if (is_string) {
 			std::string remaining;
 			while (field.back() != '\"') {
@@ -31,14 +30,16 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 			}
 		}
 		std::unique_ptr<Column> col;
-		if (is_string)
-			col = std::unique_ptr<Column>(new StringColumn(field));
+		if (is_string) 
+			col = std::unique_ptr<Column>(new StringColumn(ColumnTraits(df.header[i],"string")));
 		else
-			col = std::unique_ptr<Column>(new NumColumn(field));
-		df.cols.insert(std::make_pair(df.header[i].getName(),std::move(col)));
+			col = std::unique_ptr<Column>(new NumColumn(ColumnTraits(df.header[i],"numeric")));
+		col->push_back(std::move(field));
+		df.cols.insert(std::make_pair(df.header[i],std::move(col)));
 	}
 
 	for (df.nrows = 1; std::getline(in, buffer); df.nrows++) {
+		if (in.eof()) break;
 		std::istringstream line(buffer);
 		for (ushort i = 0; std::getline(line,field,';'); i++) {
 			bool is_string = field[0] == '\"';
@@ -49,9 +50,9 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 					field += ";" + remaining; 
 				}
 			}
-			const std::string & field_type = df.header[i].getType();
+			const std::string & field_type = df.cols[df.header[i]]->getType();
 			assert((field_type == "string" && is_string) || (field_type == "numeric" && !is_string));
-			df.cols[df.header[i].getName()]->push_back(field);
+			df.cols[df.header[i]]->push_back(std::move(field));
 		}
 	}
 	return in;

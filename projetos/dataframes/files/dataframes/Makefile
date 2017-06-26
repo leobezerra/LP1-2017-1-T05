@@ -29,11 +29,12 @@ ${OBJDIR}/%.o: $(SRCDIR)/%.cpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 test: $(TESTS) 
-	$(info ************  Testes concluídos com sucesso! ************)
+	$(info ************  Testes compilados com sucesso! ************)
 
 $(TESTDIR)/t_%: $(TESTDIR)/t_%.cpp $(OBJS)
 	$(CC) -o $@ $< $(OBJS) $(CFLAGS) $(LDFLAGS)
 	$@
+	./run-test.sh "$@"
 
 clean:
 	rm -f $(BIN) $(OBJS) $(APPOBJ)
