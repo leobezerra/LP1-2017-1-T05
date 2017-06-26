@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 
-typedef unsigned short int ushort;
-
 #include "dataframe.h"
 
 int main (int argc, char * argv[]) {

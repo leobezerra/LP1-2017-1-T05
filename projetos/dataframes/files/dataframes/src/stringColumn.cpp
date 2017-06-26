@@ -25,7 +25,6 @@ void StringColumn::push_back(std::string && value) {
 }
 
 void StringColumn::read_column(std::istream & in) {
-	std::cout << "hello" << std::endl;
 	std::string buffer, field;
 	for (ushort rows = 0; std::getline(in, buffer); rows++) {
 		std::istringstream line(buffer);

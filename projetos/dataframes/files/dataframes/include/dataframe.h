@@ -24,6 +24,10 @@ class DataFrame {
 		const std::string & getColName(ushort idx) const { return header[idx]; }
 		void print(std::ostream &, char sep='\t') const;
 		void persist(const std::string &) const;
+		void append(std::unique_ptr<Column> &);
+		void insert(std::unique_ptr<Column> &, ushort);
+		void remove(const std::string &);
+		void remove(ushort);
 };
 
 #endif

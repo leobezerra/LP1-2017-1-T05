@@ -12,18 +12,16 @@ std::ostream & operator<< (std::ostream & out, const Column & col) {
 
 std::unique_ptr<Column> make_column(const std::string & fname) {
 	std::ifstream in(fname);
-	std::string colname;
-	std::getline(in, colname);
-	std::cout << "colname: "  << colname << ", eof: " << std::boolalpha << in.eof() << std::endl; 
-
-	std::cout << "peek: " << (char) in.peek() << std::endl;
+	std::string tmp;
+	std::getline(in, tmp);
+	std::string colname(tmp.substr(1,tmp.size()-2));
+	
  	bool is_string = (in.peek() == '\"');
 	std::unique_ptr<Column> col;
 	if (is_string)
 		col = std::unique_ptr<Column>(new StringColumn(std::move(colname),"string"));
 	else
 		col = std::unique_ptr<Column>(new NumColumn(std::move(colname),"numeric"));
-	std::cout << "Jazz! " << col->getType() << std::endl;
 	col->read_column(in);
 	return col;
 }

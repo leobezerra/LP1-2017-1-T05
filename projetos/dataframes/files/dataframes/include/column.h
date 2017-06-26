@@ -7,6 +7,8 @@
 #include <memory>
 #include <utility>
 
+typedef unsigned short int ushort;
+
 class Column {
 	private:
 		std::string name, type;

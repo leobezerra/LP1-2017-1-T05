@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <memory>
 #include <cassert>
+#include <algorithm>
 
 #include "dataframe.h"
 
@@ -15,7 +16,7 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 
 	std::string field;
 	std::istringstream header_buffer(buffer);
-	while (std::getline(header_buffer,field,';')) df.header.push_back(std::move(field));
+	while (std::getline(header_buffer,field,';')) df.header.push_back(field.substr(1,field.size()-2));
 	df.ncols = df.header.size();
 
 	std::getline(in, buffer);
@@ -65,7 +66,7 @@ std::ostream & operator<< (std::ostream & out, const DataFrame & df) {
 
 void DataFrame::print(std::ostream & out, char sep) const {
 	for (ushort i = 0; i < header.size(); i++) {
-		out << header[i];
+		out << '\"' << header[i] << '\"';
 		if (i+1 != ncols) out << sep;
 	}
 	out << std::endl;
@@ -81,4 +82,31 @@ void DataFrame::print(std::ostream & out, char sep) const {
 void DataFrame::persist(const std::string & fname) const {
 	std::ofstream out(fname);
 	print(out,';');
+}
+
+void DataFrame::append(std::unique_ptr<Column> & col) {
+	header.push_back(col->getName());
+	cols.insert(std::make_pair(col->getName(),std::move(col)));
+	ncols++;
+}
+
+void DataFrame::insert(std::unique_ptr<Column> & col, ushort idx) {
+	assert(idx <= ncols);
+	header.insert(header.begin() + idx, col->getName());
+	cols.insert(std::make_pair(col->getName(),std::move(col)));
+	ncols++;
+}
+
+void DataFrame::remove(const std::string & name) {
+	cols.erase(name);
+	assert(cols.size() != ncols);
+	ncols--;
+	header.erase(std::find(header.begin(), header.end(), name));
+}
+
+void DataFrame::remove(const ushort idx) {
+	assert(idx < ncols);
+	cols.erase(header[idx]);
+	header.erase(header.begin() + idx);
+	ncols--;
 }
