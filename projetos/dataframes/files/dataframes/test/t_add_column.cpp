@@ -12,8 +12,8 @@ int main (int argc, char * argv[]) {
 	in >> df;
 	columnPtr col = make_column("../input/subset-horario.csv");
 	columnPtr col2 = make_column("../input/subset-local.csv");
-	df.append(col);
-	df.insert(col2, 2);
-	std::string out("add.csv");	
+	df.appendCol(col);
+	df.insertCol(col2, 2);
+	std::string out("add_column.csv");	
 	df.persist(out);
 }

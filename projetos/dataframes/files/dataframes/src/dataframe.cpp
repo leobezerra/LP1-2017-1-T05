@@ -85,33 +85,33 @@ void DataFrame::persist(const std::string & fname) const {
 	print(out,';');
 }
 
-void DataFrame::append(columnPtr & col) {
+void DataFrame::appendCol(columnPtr & col) {
 	header.push_back(col->getName());
 	cols.insert(std::make_pair(col->getName(),std::move(col)));
 	ncols++;
 }
 
-void DataFrame::insert(columnPtr & col, ushort idx) {
+void DataFrame::insertCol(columnPtr & col, ushort idx) {
 	assert(idx <= ncols);
 	header.insert(header.begin() + idx, col->getName());
 	cols.insert(std::make_pair(col->getName(),std::move(col)));
 	ncols++;
 }
 
-void DataFrame::remove(const std::string & name) {
+void DataFrame::removeCol(const std::string & name) {
 	cols.erase(name);
 	assert(cols.size() != ncols);
 	ncols--;
 	header.erase(std::find(header.begin(), header.end(), name));
 }
 
-void DataFrame::remove(const ushort idx) {
+void DataFrame::removeCol(const ushort idx) {
 	assert(idx < ncols);
 	cols.erase(header[idx]);
 	header.erase(header.begin() + idx);
 	ncols--;
 }
 
-columnPtr & DataFrame::at(const std::string & name) { return cols[name]; }
-columnPtr & DataFrame::at(ushort idx) { return cols[header[idx]]; }
+columnPtr & DataFrame::atCol(const std::string & name) { return cols[name]; }
+columnPtr & DataFrame::atCol(ushort idx) { return cols[header[idx]]; }
 

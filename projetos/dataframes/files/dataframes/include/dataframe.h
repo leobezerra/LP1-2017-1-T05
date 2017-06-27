@@ -24,12 +24,12 @@ class DataFrame {
 		const std::string & getColName(ushort idx) const { return header[idx]; }
 		void print(std::ostream &, char sep='\t') const;
 		void persist(const std::string &) const;
-		void append(columnPtr &);
-		void insert(columnPtr &, ushort);
-		void remove(const std::string &);
-		void remove(ushort);
-		columnPtr & at(const std::string &);
-		columnPtr & at(ushort);
+		void appendCol(columnPtr &);
+		void insertCol(columnPtr &, ushort);
+		void removeCol(const std::string &);
+		void removeCol(ushort);
+		columnPtr & atCol(const std::string &);
+		columnPtr & atCol(ushort);
 };
 
 #endif
