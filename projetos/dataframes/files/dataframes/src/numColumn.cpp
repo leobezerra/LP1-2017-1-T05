@@ -8,7 +8,7 @@
 
 std::ostream & NumColumn::print(std::ostream & out) const {
 	for (ushort i = 0; i < data.size(); i++)
-		out << data[i];
+		out << data[i] << std::endl;
 	return out;
 }
 

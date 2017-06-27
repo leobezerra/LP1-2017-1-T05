@@ -16,7 +16,7 @@ typedef unsigned short int ushort;
 class DataFrame {
 	private:
 		std::vector<std::string> header;
-		std::unordered_map<std::string,std::unique_ptr<Column>> cols;
+		std::unordered_map<std::string,columnPtr> cols;
 		ushort nrows, ncols;
 	public:
 		friend std::istream & operator>> (std::istream &, DataFrame &);
@@ -24,10 +24,12 @@ class DataFrame {
 		const std::string & getColName(ushort idx) const { return header[idx]; }
 		void print(std::ostream &, char sep='\t') const;
 		void persist(const std::string &) const;
-		void append(std::unique_ptr<Column> &);
-		void insert(std::unique_ptr<Column> &, ushort);
+		void append(columnPtr &);
+		void insert(columnPtr &, ushort);
 		void remove(const std::string &);
 		void remove(ushort);
+		columnPtr & at(const std::string &);
+		columnPtr & at(ushort);
 };
 
 #endif

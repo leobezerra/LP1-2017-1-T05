@@ -15,6 +15,7 @@ class NumColumn : public Column {
 			: Column(name,std::forward<std::string>(type)) { }
 		NumColumn(std::string && name, std::string && type) 
 			: Column(std::forward<std::string>(name),std::forward<std::string>(type)) { }
+		NumColumn(const NumColumn & col) : Column(col), data(col.data.begin(), col.data.end()) {}
 		std::ostream & print(std::ostream &) const;
 		std::ostream & print(std::ostream &, ushort) const;
 		void push_back(std::string &&);

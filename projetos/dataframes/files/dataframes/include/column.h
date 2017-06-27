@@ -15,6 +15,7 @@ class Column {
 	public:
 		Column(const std::string & _name, std::string && _type) : name(_name), type(_type) {}
 		Column(std::string && _name, std::string && _type) : name(_name), type(_type) {}
+		Column(const Column & col) : name(col.name), type(col.type) {}
 		const std::string & getName(void) { return name; }
 		const std::string & getType(void) { return type; }
 		friend std::ostream & operator<< (std::ostream &, const Column &);
@@ -25,6 +26,8 @@ class Column {
 		virtual void read_column(std::istream &) = 0;
 };
 
-std::unique_ptr<Column> make_column(const std::string &);
+typedef std::shared_ptr<Column> columnPtr;
+
+columnPtr make_column(const std::string &);
 
 #endif

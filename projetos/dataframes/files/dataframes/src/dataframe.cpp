@@ -30,11 +30,11 @@ std::istream & operator>> (std::istream & in, DataFrame & df) {
 				field += remaining; 
 			}
 		}
-		std::unique_ptr<Column> col;
+		columnPtr col;
 		if (is_string) 
-			col = std::unique_ptr<Column>(new StringColumn(df.header[i],"string"));
+			col = columnPtr(new StringColumn(df.header[i],"string"));
 		else
-			col = std::unique_ptr<Column>(new NumColumn(df.header[i],"numeric"));
+			col = columnPtr(new NumColumn(df.header[i],"numeric"));
 		col->push_back(std::move(field));
 		df.cols.insert(std::make_pair(df.header[i],std::move(col)));
 	}
@@ -72,7 +72,8 @@ void DataFrame::print(std::ostream & out, char sep) const {
 	out << std::endl;
 	for (ushort i = 0; i < nrows; i++) {
 		for (ushort j = 0; j < ncols; j++) {
-			cols.at(getColName(j))->print(out, i);
+			const columnPtr & ptr = cols.at(getColName(j));
+			ptr->print(out, i);
 			if (j+1 != ncols) out << sep;
 		}
 		out << std::endl;
@@ -84,13 +85,13 @@ void DataFrame::persist(const std::string & fname) const {
 	print(out,';');
 }
 
-void DataFrame::append(std::unique_ptr<Column> & col) {
+void DataFrame::append(columnPtr & col) {
 	header.push_back(col->getName());
 	cols.insert(std::make_pair(col->getName(),std::move(col)));
 	ncols++;
 }
 
-void DataFrame::insert(std::unique_ptr<Column> & col, ushort idx) {
+void DataFrame::insert(columnPtr & col, ushort idx) {
 	assert(idx <= ncols);
 	header.insert(header.begin() + idx, col->getName());
 	cols.insert(std::make_pair(col->getName(),std::move(col)));
@@ -110,3 +111,7 @@ void DataFrame::remove(const ushort idx) {
 	header.erase(header.begin() + idx);
 	ncols--;
 }
+
+columnPtr & DataFrame::at(const std::string & name) { return cols[name]; }
+columnPtr & DataFrame::at(ushort idx) { return cols[header[idx]]; }
+
