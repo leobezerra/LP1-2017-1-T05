@@ -37,7 +37,7 @@ std::ostream & operator<< (std::ostream & out, const NewsFeed & feed) {
 	for (auto itr = feed.publishers.begin(); itr != feed.publishers.end(); itr++)
 		out << itr->second;
 	for (auto itr = feed.news.begin(); itr != feed.news.end(); itr++)
-		out << itr->second;
+		out << *itr;
 	return out;
 }
 
@@ -47,34 +47,42 @@ void NewsFeed::read_buffer(const std::string & fname) {
 		News piece;
 		buffer >> piece;
 		if (buffer.eof()) break;
-		news.insert(std::make_pair(publishers[piece.getPublisherID()],piece));
+		news.insert(piece);
 	}
 }
 
-void NewsFeed::sort_recent(void) {
-	std::set<News> recent;
-	std::transform(news.cbegin(), news.cend(),
-               std::inserter(recent, recent.begin()),
-               [] (const std::pair<Publisher, News> & entry)
-               { return entry.second; });
-	recent_news = recent;
-} 
+// void NewsFeed::sort_recent(void) {
+// 	std::set<News> recent;
+// 	std::transform(news.cbegin(), news.cend(),
+//                std::inserter(recent, recent.begin()),
+//                [] (const std::pair<Publisher, News> & entry)
+//                { return entry.second; });
+// 	recent_news = std::move(recent);
+// }
 
 void NewsFeed::sort_active(void) {
-	std::multimap<Publisher,News,activeCmp> active(news.begin(),news.end());
-	active_news = active;
+	std::multimap<Publisher,News,activeCmp> active;
+	std::transform(news.cbegin(), news.cend(),
+               std::inserter(active, active.begin()),
+               [this] (const News & entry)
+               { return std::pair<Publisher, News>(this->publishers[entry.getPublisherID()],entry); });
+	active_news = std::move(active);
 }
 
 void NewsFeed::sort_top(void) {
-	std::multimap<Publisher,News,topCmp> top(news.begin(),news.end());
-	top_news = top;
+	std::multimap<Publisher,News,topCmp> top;
+	std::transform(news.cbegin(), news.cend(),
+               std::inserter(top, top.begin()),
+               [this] (const News & entry)
+               { return std::pair<Publisher, News>(this->publishers[entry.getPublisherID()],entry); });
+	top_news = std::move(top);
 }
 
 void NewsFeed::render(void) {
 	ushort count = 0;
 	if (rank == "recent-news") {
-		sort_recent();
-		for (auto itr = recent_news.begin(); itr != recent_news.end() && count < 10; itr++, count++)
+		// sort_recent();
+		for (auto itr = news.begin(); itr != news.end() && count < 10; itr++, count++)
 			std::cout << *itr;
 	}
 	else if (rank == "recent-active") {

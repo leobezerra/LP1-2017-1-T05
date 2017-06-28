@@ -15,8 +15,8 @@ class NewsFeed {
 		std::string rank;
 		ushort refresh_rate;
 		std::unordered_map<ushort,Publisher> publishers;
-		std::unordered_multimap<Publisher,News> news;
-		std::set<News> recent_news;
+		std::multiset<News> news;
+		// std::set<News> recent_news;
 		std::multimap<Publisher,News,activeCmp> active_news;
 		std::multimap<Publisher,News,topCmp> top_news;
 	public:

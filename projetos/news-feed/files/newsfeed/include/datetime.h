@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+typedef unsigned int ushort;
+
 class Datetime {
 	private:
 		ushort years, months, days,	hours, minutes, seconds;
