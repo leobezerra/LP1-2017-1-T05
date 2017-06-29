@@ -9,6 +9,23 @@
 
 typedef unsigned short int ushort;
 
+class Cell {
+	public:
+		union DataType {
+			std::string str;
+			float num;
+		}
+	private: 
+		DataType data;
+	public:
+		virtual DataType & getData() const = 0;
+};
+
+class StringCell : public Cell {
+	public:
+		DataType & getData() { return data.str; }
+};
+
 class Column {
 	private:
 		std::string name, type;

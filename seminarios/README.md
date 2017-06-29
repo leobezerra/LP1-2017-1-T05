@@ -14,8 +14,10 @@ C++ é uma linguagem de forte presença no mercado devido à eficiência de suas
 
 **Aluno** | **Tema**
 Diogo | *Boost*
+Eric | *CMake*
 Heytor | *Google Test*
 Jeckson | *CMake*
+João Pedro | *GZip*
 João Santos | *CMake*
 Joelson | *Gzip*
 José Augusto |*Gzip*
