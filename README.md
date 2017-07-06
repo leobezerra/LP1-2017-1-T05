@@ -11,6 +11,10 @@ Confira a descrição dos [seminários](seminarios/).
 
 ---
 
+Confira os [arquivos de teste](reposicao/files) detalhados nos enunciados da reposição.
+
+---
+
 Abaixo, os materiais de consulta para cada tópico de aula.
 
 ---
